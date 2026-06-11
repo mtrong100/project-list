@@ -1,0 +1,1367 @@
+<!DOCTYPE html>
+<html lang="en" data-theme="system">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <meta name="description" content="A curated list of projects — filter, sort, and search with ease." />
+  <meta name="theme-color" content="#1976D2" id="meta-theme" />
+  <meta name="mobile-web-app-capable" content="yes" />
+  <meta name="apple-mobile-web-app-capable" content="yes" />
+  <meta name="apple-mobile-web-app-status-bar-style" content="default" />
+  <meta name="apple-mobile-web-app-title" content="Project List" />
+  <title>Project List</title>
+
+  <!-- PWA -->
+  <link rel="manifest" href="manifest.json" />
+  <link rel="icon" type="image/png" href="favicon.png" />
+  <link rel="apple-touch-icon" href="icons/icon-152.png" />
+
+  <!-- Google Fonts: Be Vietnam Pro — full Vietnamese support -->
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link href="https://fonts.googleapis.com/css2?family=Be+Vietnam+Pro:ital,wght@0,300;0,400;0,500;0,600;0,700;1,400&display=swap" rel="stylesheet" />
+  <!-- Material Symbols -->
+  <link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Rounded:opsz,wght,FILL,GRAD@20..48,100..700,0..1,-50..200" rel="stylesheet" />
+
+  <style>
+    /* ─── CSS Custom Properties (MD3 tokens) ─── */
+    :root {
+      --md-primary: #1976D2;
+      --md-on-primary: #ffffff;
+      --md-primary-container: #D1E4FF;
+      --md-on-primary-container: #001D36;
+      --md-secondary: #546E8C;
+      --md-on-secondary: #ffffff;
+      --md-secondary-container: #D6E4F7;
+      --md-tertiary: #6B5778;
+      --md-surface: #F8F9FA;
+      --md-surface-1: #EEF4FB;
+      --md-surface-2: #E4EDF8;
+      --md-surface-variant: #DDE3EA;
+      --md-on-surface: #1A1C1E;
+      --md-on-surface-variant: #42474E;
+      --md-outline: #72787E;
+      --md-outline-variant: #C2C7CE;
+      --md-background: #F8F9FA;
+      --md-on-background: #1A1C1E;
+      --md-error: #BA1A1A;
+      --md-shadow: rgba(0,0,0,0.12);
+      --md-scrim: rgba(0,0,0,0.32);
+      --md-elevation-1: 0 1px 2px rgba(0,0,0,.10), 0 1px 3px 1px rgba(0,0,0,.08);
+      --md-elevation-2: 0 1px 2px rgba(0,0,0,.10), 0 2px 6px 2px rgba(0,0,0,.08);
+      --md-elevation-3: 0 1px 3px rgba(0,0,0,.10), 0 4px 8px 3px rgba(0,0,0,.10);
+      --font: 'Be Vietnam Pro', sans-serif;
+      --radius-xs: 4px;
+      --radius-sm: 8px;
+      --radius-md: 12px;
+      --radius-lg: 16px;
+      --radius-xl: 24px;
+      --radius-full: 9999px;
+      --transition: 0.2s cubic-bezier(0.2, 0, 0, 1);
+      --nav-height: 64px;
+      --bottom-nav-height: 80px;
+    }
+
+    [data-theme="dark"], .dark-mode {
+      --md-primary: #9DCAFF;
+      --md-on-primary: #003258;
+      --md-primary-container: #00497D;
+      --md-on-primary-container: #D1E4FF;
+      --md-secondary: #B8CADD;
+      --md-on-secondary: #233447;
+      --md-secondary-container: #3A4D5E;
+      --md-tertiary: #D4BEDF;
+      --md-surface: #1A1C1E;
+      --md-surface-1: #21252C;
+      --md-surface-2: #262B34;
+      --md-surface-variant: #42474E;
+      --md-on-surface: #E2E2E6;
+      --md-on-surface-variant: #C2C7CE;
+      --md-outline: #8C9199;
+      --md-outline-variant: #42474E;
+      --md-background: #111316;
+      --md-on-background: #E2E2E6;
+      --md-error: #FFB4AB;
+      --md-shadow: rgba(0,0,0,0.4);
+      --md-elevation-1: 0 1px 2px rgba(0,0,0,.3), 0 1px 3px 1px rgba(0,0,0,.25);
+      --md-elevation-2: 0 1px 2px rgba(0,0,0,.3), 0 2px 6px 2px rgba(0,0,0,.25);
+      --md-elevation-3: 0 1px 3px rgba(0,0,0,.3), 0 4px 8px 3px rgba(0,0,0,.25);
+    }
+
+    /* ─── Reset & Base ─── */
+    *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+    html { scroll-behavior: smooth; }
+    body {
+      font-family: var(--font);
+      background: var(--md-background);
+      color: var(--md-on-background);
+      min-height: 100vh;
+      transition: background var(--transition), color var(--transition);
+      overflow-x: hidden;
+    }
+    a { color: var(--md-primary); text-decoration: none; }
+    img { max-width: 100%; display: block; }
+    button { cursor: pointer; border: none; background: none; font-family: var(--font); }
+
+    /* Material Symbols */
+    .material-symbols-rounded {
+      font-variation-settings: 'FILL' 0, 'wght' 400, 'GRAD' 0, 'opsz' 24;
+      user-select: none;
+      font-size: 24px;
+      line-height: 1;
+    }
+    .icon-fill { font-variation-settings: 'FILL' 1, 'wght' 400, 'GRAD' 0, 'opsz' 24; }
+
+    /* ─── Top App Bar ─── */
+    .top-app-bar {
+      position: sticky;
+      top: 0;
+      z-index: 100;
+      height: var(--nav-height);
+      background: var(--md-surface-1);
+      border-bottom: 1px solid var(--md-outline-variant);
+      display: flex;
+      align-items: center;
+      padding: 0 8px 0 16px;
+      gap: 8px;
+      transition: background var(--transition), box-shadow var(--transition);
+    }
+    .top-app-bar.scrolled {
+      box-shadow: var(--md-elevation-2);
+    }
+    .app-title {
+      flex: 1;
+      display: flex;
+      align-items: center;
+      gap: 10px;
+    }
+    .app-title img { width: 32px; height: 32px; border-radius: 8px; }
+    .app-title h1 {
+      font-size: 22px;
+      font-weight: 600;
+      color: var(--md-on-surface);
+      letter-spacing: -0.2px;
+    }
+    .top-actions { display: flex; align-items: center; gap: 4px; }
+    .icon-btn {
+      width: 48px; height: 48px;
+      border-radius: var(--radius-full);
+      display: flex; align-items: center; justify-content: center;
+      color: var(--md-on-surface-variant);
+      transition: background var(--transition), color var(--transition);
+      position: relative;
+      overflow: hidden;
+    }
+    .icon-btn:hover { background: color-mix(in srgb, var(--md-on-surface) 8%, transparent); }
+    .icon-btn:active { background: color-mix(in srgb, var(--md-on-surface) 12%, transparent); }
+    .icon-btn.active { color: var(--md-primary); }
+
+    /* ─── Search Bar ─── */
+    .search-section {
+      padding: 12px 16px 8px;
+    }
+    .search-bar {
+      display: flex;
+      align-items: center;
+      background: var(--md-surface-variant);
+      border-radius: var(--radius-full);
+      padding: 0 8px 0 16px;
+      height: 52px;
+      gap: 8px;
+      transition: background var(--transition), box-shadow var(--transition);
+      border: 1px solid transparent;
+    }
+    .search-bar:focus-within {
+      background: var(--md-surface-2);
+      border-color: var(--md-primary);
+      box-shadow: 0 0 0 2px color-mix(in srgb, var(--md-primary) 20%, transparent);
+    }
+    .search-bar .material-symbols-rounded { color: var(--md-on-surface-variant); font-size: 22px; }
+    .search-bar input {
+      flex: 1;
+      border: none;
+      background: transparent;
+      font-family: var(--font);
+      font-size: 16px;
+      color: var(--md-on-surface);
+      outline: none;
+    }
+    .search-bar input::placeholder { color: var(--md-on-surface-variant); }
+    .search-clear {
+      width: 36px; height: 36px;
+      border-radius: var(--radius-full);
+      display: flex; align-items: center; justify-content: center;
+      color: var(--md-on-surface-variant);
+      opacity: 0;
+      pointer-events: none;
+      transition: opacity var(--transition);
+    }
+    .search-clear.visible { opacity: 1; pointer-events: auto; }
+    .search-clear:hover { background: color-mix(in srgb, var(--md-on-surface) 8%, transparent); }
+
+    /* ─── Filter Chips ─── */
+    .filter-section {
+      padding: 4px 16px 12px;
+      display: flex;
+      gap: 8px;
+      overflow-x: auto;
+      scrollbar-width: none;
+    }
+    .filter-section::-webkit-scrollbar { display: none; }
+    .chip {
+      display: inline-flex;
+      align-items: center;
+      gap: 6px;
+      padding: 6px 16px;
+      border-radius: var(--radius-full);
+      font-size: 14px;
+      font-weight: 500;
+      font-family: var(--font);
+      white-space: nowrap;
+      background: var(--md-surface-variant);
+      color: var(--md-on-surface-variant);
+      border: 1px solid var(--md-outline-variant);
+      cursor: pointer;
+      transition: all var(--transition);
+      height: 36px;
+    }
+    .chip:hover { background: color-mix(in srgb, var(--md-primary) 8%, var(--md-surface-variant)); }
+    .chip.active {
+      background: var(--md-secondary-container);
+      color: var(--md-on-surface);
+      border-color: var(--md-secondary-container);
+    }
+    .chip .material-symbols-rounded { font-size: 18px; }
+
+    /* ─── Toolbar row ─── */
+    .toolbar {
+      padding: 0 16px 12px;
+      display: flex;
+      align-items: center;
+      gap: 8px;
+    }
+    .result-count {
+      flex: 1;
+      font-size: 13px;
+      color: var(--md-on-surface-variant);
+      font-weight: 500;
+    }
+    .sort-btn, .view-btn {
+      display: flex; align-items: center; gap: 6px;
+      padding: 6px 12px;
+      border-radius: var(--radius-md);
+      font-size: 13px;
+      font-weight: 500;
+      font-family: var(--font);
+      color: var(--md-on-surface-variant);
+      background: var(--md-surface-variant);
+      border: 1px solid var(--md-outline-variant);
+      cursor: pointer;
+      transition: all var(--transition);
+      height: 36px;
+    }
+    .sort-btn:hover, .view-btn:hover {
+      background: color-mix(in srgb, var(--md-primary) 8%, var(--md-surface-variant));
+    }
+    .sort-btn .material-symbols-rounded,
+    .view-btn .material-symbols-rounded { font-size: 18px; }
+    .view-btn.active {
+      background: var(--md-primary-container);
+      color: var(--md-on-primary-container);
+      border-color: var(--md-primary-container);
+    }
+
+    /* ─── Grid / List ─── */
+    .projects-container {
+      padding: 0 16px 100px;
+    }
+    .projects-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fill, minmax(300px, 1fr));
+      gap: 16px;
+    }
+    .projects-list {
+      display: flex;
+      flex-direction: column;
+      gap: 8px;
+    }
+
+    /* ─── Project Card (Grid) ─── */
+    .project-card {
+      background: var(--md-surface-1);
+      border-radius: var(--radius-xl);
+      border: 1px solid var(--md-outline-variant);
+      overflow: hidden;
+      transition: transform var(--transition), box-shadow var(--transition), background var(--transition);
+      cursor: pointer;
+      display: flex;
+      flex-direction: column;
+    }
+    .project-card:hover {
+      transform: translateY(-2px);
+      box-shadow: var(--md-elevation-3);
+    }
+    .project-card:active { transform: translateY(0); }
+
+    .card-image {
+      width: 100%;
+      aspect-ratio: 16/9;
+      object-fit: cover;
+      background: var(--md-surface-2);
+    }
+    .card-image-placeholder {
+      width: 100%;
+      aspect-ratio: 16/9;
+      background: linear-gradient(135deg, var(--md-primary-container), var(--md-secondary-container));
+      display: flex;
+      align-items: center;
+      justify-content: center;
+    }
+    .card-image-placeholder .material-symbols-rounded {
+      font-size: 48px;
+      color: var(--md-on-primary-container);
+      opacity: 0.6;
+    }
+    .card-body {
+      padding: 16px;
+      flex: 1;
+      display: flex;
+      flex-direction: column;
+      gap: 8px;
+    }
+    .card-category {
+      display: inline-flex;
+      align-items: center;
+      gap: 4px;
+      font-size: 11px;
+      font-weight: 600;
+      text-transform: uppercase;
+      letter-spacing: 0.8px;
+      color: var(--md-primary);
+      background: var(--md-primary-container);
+      padding: 3px 10px;
+      border-radius: var(--radius-full);
+      width: fit-content;
+    }
+    .card-name {
+      font-size: 16px;
+      font-weight: 600;
+      color: var(--md-on-surface);
+      line-height: 1.3;
+    }
+    .card-actions {
+      display: flex;
+      gap: 8px;
+      margin-top: auto;
+      padding-top: 8px;
+    }
+    .card-btn {
+      flex: 1;
+      display: flex; align-items: center; justify-content: center;
+      gap: 6px;
+      padding: 8px 12px;
+      border-radius: var(--radius-md);
+      font-size: 13px;
+      font-weight: 600;
+      font-family: var(--font);
+      cursor: pointer;
+      transition: all var(--transition);
+      text-decoration: none;
+      height: 36px;
+    }
+    .card-btn-primary {
+      background: var(--md-primary);
+      color: var(--md-on-primary);
+    }
+    .card-btn-primary:hover { background: color-mix(in srgb, var(--md-on-primary) 8%, var(--md-primary)); }
+    .card-btn-secondary {
+      background: var(--md-surface-variant);
+      color: var(--md-on-surface-variant);
+      border: 1px solid var(--md-outline-variant);
+    }
+    .card-btn-secondary:hover { background: color-mix(in srgb, var(--md-on-surface) 8%, var(--md-surface-variant)); }
+    .card-btn .material-symbols-rounded { font-size: 16px; }
+
+    /* ─── Project Row (List view) ─── */
+    .project-row {
+      background: var(--md-surface-1);
+      border-radius: var(--radius-lg);
+      border: 1px solid var(--md-outline-variant);
+      padding: 12px 16px;
+      display: flex;
+      align-items: center;
+      gap: 16px;
+      transition: background var(--transition), box-shadow var(--transition);
+      cursor: pointer;
+    }
+    .project-row:hover { background: var(--md-surface-2); box-shadow: var(--md-elevation-1); }
+    .row-thumb {
+      width: 56px; height: 56px;
+      border-radius: var(--radius-md);
+      object-fit: cover;
+      flex-shrink: 0;
+      background: var(--md-surface-2);
+    }
+    .row-thumb-placeholder {
+      width: 56px; height: 56px;
+      border-radius: var(--radius-md);
+      background: linear-gradient(135deg, var(--md-primary-container), var(--md-secondary-container));
+      display: flex; align-items: center; justify-content: center;
+      flex-shrink: 0;
+    }
+    .row-thumb-placeholder .material-symbols-rounded { font-size: 24px; color: var(--md-on-primary-container); }
+    .row-info { flex: 1; min-width: 0; }
+    .row-name {
+      font-size: 15px; font-weight: 600;
+      color: var(--md-on-surface);
+      white-space: nowrap; overflow: hidden; text-overflow: ellipsis;
+    }
+    .row-category {
+      font-size: 12px; font-weight: 500;
+      color: var(--md-on-surface-variant);
+      margin-top: 3px;
+    }
+    .row-actions { display: flex; gap: 4px; flex-shrink: 0; }
+    .row-icon-btn {
+      width: 40px; height: 40px;
+      border-radius: var(--radius-full);
+      display: flex; align-items: center; justify-content: center;
+      color: var(--md-on-surface-variant);
+      transition: background var(--transition);
+    }
+    .row-icon-btn:hover { background: color-mix(in srgb, var(--md-on-surface) 8%, transparent); }
+    .row-icon-btn .material-symbols-rounded { font-size: 20px; }
+
+    /* ─── Skeleton Loading ─── */
+    @keyframes skeleton-shimmer {
+      0% { background-position: -200% 0; }
+      100% { background-position: 200% 0; }
+    }
+    .skeleton {
+      background: linear-gradient(90deg,
+        var(--md-surface-variant) 25%,
+        color-mix(in srgb, var(--md-surface) 40%, var(--md-surface-variant)) 50%,
+        var(--md-surface-variant) 75%
+      );
+      background-size: 200% 100%;
+      animation: skeleton-shimmer 1.5s infinite;
+      border-radius: var(--radius-sm);
+    }
+    .skeleton-card {
+      background: var(--md-surface-1);
+      border-radius: var(--radius-xl);
+      border: 1px solid var(--md-outline-variant);
+      overflow: hidden;
+    }
+    .skeleton-image { aspect-ratio: 16/9; }
+    .skeleton-body { padding: 16px; display: flex; flex-direction: column; gap: 10px; }
+    .skeleton-tag { height: 22px; width: 80px; border-radius: var(--radius-full); }
+    .skeleton-title { height: 20px; width: 75%; }
+    .skeleton-title-sm { height: 16px; width: 50%; }
+    .skeleton-actions { display: flex; gap: 8px; margin-top: 8px; }
+    .skeleton-btn { flex: 1; height: 36px; border-radius: var(--radius-md); }
+
+    /* ─── Empty State ─── */
+    .empty-state {
+      display: flex; flex-direction: column; align-items: center; justify-content: center;
+      padding: 64px 32px;
+      gap: 16px;
+      text-align: center;
+    }
+    .empty-icon {
+      width: 72px; height: 72px;
+      border-radius: var(--radius-xl);
+      background: var(--md-primary-container);
+      display: flex; align-items: center; justify-content: center;
+    }
+    .empty-icon .material-symbols-rounded { font-size: 36px; color: var(--md-on-primary-container); }
+    .empty-title { font-size: 18px; font-weight: 600; color: var(--md-on-surface); }
+    .empty-subtitle { font-size: 14px; color: var(--md-on-surface-variant); line-height: 1.5; }
+    .empty-reset {
+      padding: 10px 24px;
+      border-radius: var(--radius-full);
+      background: var(--md-primary);
+      color: var(--md-on-primary);
+      font-size: 14px; font-weight: 600; font-family: var(--font);
+      cursor: pointer;
+      transition: opacity var(--transition);
+    }
+    .empty-reset:hover { opacity: 0.9; }
+
+    /* ─── Sort Menu ─── */
+    .menu-backdrop {
+      position: fixed; inset: 0; z-index: 200;
+      background: var(--md-scrim);
+      opacity: 0; pointer-events: none;
+      transition: opacity var(--transition);
+    }
+    .menu-backdrop.visible { opacity: 1; pointer-events: auto; }
+    .sort-menu {
+      position: fixed; right: 16px;
+      background: var(--md-surface-1);
+      border-radius: var(--radius-xl);
+      box-shadow: var(--md-elevation-3);
+      z-index: 201;
+      width: 220px;
+      overflow: hidden;
+      transform: scale(0.95) translateY(-8px);
+      transform-origin: top right;
+      opacity: 0; pointer-events: none;
+      transition: transform var(--transition), opacity var(--transition);
+    }
+    .sort-menu.visible { transform: scale(1) translateY(0); opacity: 1; pointer-events: auto; }
+    .sort-menu-header {
+      padding: 12px 16px 8px;
+      font-size: 12px; font-weight: 600;
+      text-transform: uppercase; letter-spacing: 0.8px;
+      color: var(--md-on-surface-variant);
+    }
+    .sort-option {
+      display: flex; align-items: center; gap: 12px;
+      padding: 12px 16px;
+      cursor: pointer;
+      font-size: 14px; font-weight: 500;
+      color: var(--md-on-surface);
+      transition: background var(--transition);
+    }
+    .sort-option:hover { background: color-mix(in srgb, var(--md-on-surface) 6%, transparent); }
+    .sort-option.active { color: var(--md-primary); }
+    .sort-option .material-symbols-rounded { font-size: 20px; }
+    .sort-check { margin-left: auto; font-size: 20px !important; opacity: 0; }
+    .sort-option.active .sort-check { opacity: 1; }
+
+    /* ─── Theme Menu ─── */
+    .theme-menu {
+      position: fixed; right: 16px;
+      background: var(--md-surface-1);
+      border-radius: var(--radius-xl);
+      box-shadow: var(--md-elevation-3);
+      z-index: 201;
+      width: 200px;
+      overflow: hidden;
+      transform: scale(0.95) translateY(-8px);
+      transform-origin: top right;
+      opacity: 0; pointer-events: none;
+      transition: transform var(--transition), opacity var(--transition);
+    }
+    .theme-menu.visible { transform: scale(1) translateY(0); opacity: 1; pointer-events: auto; }
+
+    /* ─── Language Toggle ─── */
+    .lang-badge {
+      display: flex; align-items: center; gap: 4px;
+      padding: 6px 12px; height: 36px;
+      border-radius: var(--radius-full);
+      font-size: 13px; font-weight: 700;
+      font-family: var(--font);
+      color: var(--md-on-surface-variant);
+      background: var(--md-surface-variant);
+      border: 1px solid var(--md-outline-variant);
+      cursor: pointer;
+      transition: all var(--transition);
+    }
+    .lang-badge:hover { background: color-mix(in srgb, var(--md-primary) 8%, var(--md-surface-variant)); }
+
+    /* ─── Bottom Nav (Mobile) ─── */
+    .bottom-nav {
+      display: none;
+      position: fixed; bottom: 0; left: 0; right: 0;
+      height: var(--bottom-nav-height);
+      background: var(--md-surface-1);
+      border-top: 1px solid var(--md-outline-variant);
+      z-index: 100;
+      padding: 0 8px;
+      align-items: center;
+      justify-content: space-around;
+    }
+    .bottom-nav-item {
+      display: flex; flex-direction: column; align-items: center; gap: 4px;
+      cursor: pointer;
+      padding: 8px 20px;
+      border-radius: var(--radius-lg);
+      transition: background var(--transition);
+      flex: 1;
+      position: relative;
+    }
+    .bottom-nav-item:hover { background: color-mix(in srgb, var(--md-on-surface) 6%, transparent); }
+    .bottom-nav-indicator {
+      position: absolute; top: 6px;
+      width: 64px; height: 32px;
+      border-radius: var(--radius-full);
+      background: var(--md-secondary-container);
+      opacity: 0;
+      transition: opacity var(--transition);
+    }
+    .bottom-nav-item.active .bottom-nav-indicator { opacity: 1; }
+    .bottom-nav-item .material-symbols-rounded {
+      font-size: 24px;
+      color: var(--md-on-surface-variant);
+      z-index: 1;
+    }
+    .bottom-nav-item.active .material-symbols-rounded { color: var(--md-on-surface); }
+    .bottom-nav-label {
+      font-size: 12px; font-weight: 600;
+      color: var(--md-on-surface-variant);
+      z-index: 1;
+    }
+    .bottom-nav-item.active .bottom-nav-label { color: var(--md-on-surface); }
+
+    /* ─── Loading Spinner ─── */
+    .loader-container {
+      display: flex; flex-direction: column; align-items: center;
+      padding: 48px;
+      gap: 16px;
+    }
+    .loader-ring {
+      width: 48px; height: 48px;
+      border: 4px solid var(--md-outline-variant);
+      border-top-color: var(--md-primary);
+      border-radius: 50%;
+      animation: spin 0.8s linear infinite;
+    }
+    @keyframes spin { to { transform: rotate(360deg); } }
+
+    /* ─── Error State ─── */
+    .error-state {
+      display: flex; flex-direction: column; align-items: center;
+      padding: 48px 32px; gap: 12px; text-align: center;
+    }
+    .error-icon { font-size: 48px; color: var(--md-error); }
+    .error-title { font-size: 18px; font-weight: 600; }
+    .error-msg { font-size: 14px; color: var(--md-on-surface-variant); }
+
+    /* ─── Footer ─── */
+    .app-footer {
+      text-align: center;
+      padding: 16px;
+      font-size: 12px;
+      color: var(--md-on-surface-variant);
+      border-top: 1px solid var(--md-outline-variant);
+      margin-top: 8px;
+    }
+    .app-footer a { color: var(--md-primary); font-weight: 600; }
+
+    /* ─── Ripple ─── */
+    .ripple-container { position: relative; overflow: hidden; }
+    .ripple {
+      position: absolute;
+      border-radius: 50%;
+      background: currentColor;
+      opacity: 0.12;
+      transform: scale(0);
+      animation: ripple-anim 0.5s ease-out forwards;
+      pointer-events: none;
+    }
+    @keyframes ripple-anim {
+      to { transform: scale(4); opacity: 0; }
+    }
+
+    /* ─── Responsive ─── */
+    @media (max-width: 600px) {
+      :root { --nav-height: 56px; }
+      .projects-grid { grid-template-columns: 1fr; gap: 12px; }
+      .projects-container { padding: 0 12px 100px; }
+      .search-section { padding: 10px 12px 6px; }
+      .filter-section { padding: 4px 12px 10px; }
+      .toolbar { padding: 0 12px 10px; }
+      .app-title h1 { font-size: 18px; }
+      .bottom-nav { display: flex; }
+      .top-app-bar .sort-btn,
+      .top-app-bar .view-btn,
+      .top-app-bar .lang-badge { display: none; }
+    }
+    @media (min-width: 601px) and (max-width: 900px) {
+      .projects-grid { grid-template-columns: repeat(2, 1fr); }
+    }
+    @media (min-width: 1200px) {
+      .projects-grid { grid-template-columns: repeat(auto-fill, minmax(280px, 1fr)); }
+      .projects-container { max-width: 1400px; margin: 0 auto; padding: 0 24px 48px; }
+      .search-section, .filter-section, .toolbar {
+        max-width: 1400px; margin: 0 auto;
+        padding-left: 24px; padding-right: 24px;
+      }
+    }
+    @media (prefers-reduced-motion: reduce) {
+      *, *::before, *::after { animation-duration: 0.01ms !important; transition-duration: 0.01ms !important; }
+    }
+  </style>
+</head>
+<body>
+
+  <!-- Top App Bar -->
+  <header class="top-app-bar" id="topBar">
+    <div class="app-title">
+      <img src="icons/icon-48.png" alt="logo" />
+      <h1 id="appTitle">Project List</h1>
+    </div>
+    <div class="top-actions">
+      <button class="lang-badge" id="langToggle" aria-label="Toggle language" title="Toggle language">
+        <span class="material-symbols-rounded" style="font-size:16px">translate</span>
+        <span id="langLabel">EN</span>
+      </button>
+      <button class="icon-btn view-btn" id="viewToggleBtn" title="Toggle view">
+        <span class="material-symbols-rounded" id="viewIcon">grid_view</span>
+      </button>
+      <button class="icon-btn" id="sortBtnTop" title="Sort">
+        <span class="material-symbols-rounded">sort</span>
+      </button>
+      <button class="icon-btn" id="themeBtnTop" title="Theme">
+        <span class="material-symbols-rounded" id="themeIconTop">brightness_6</span>
+      </button>
+    </div>
+  </header>
+
+  <!-- Search -->
+  <section class="search-section">
+    <div class="search-bar">
+      <span class="material-symbols-rounded">search</span>
+      <input type="text" id="searchInput" autocomplete="off" spellcheck="false" />
+      <button class="search-clear" id="searchClear">
+        <span class="material-symbols-rounded">close</span>
+      </button>
+    </div>
+  </section>
+
+  <!-- Category Chips -->
+  <section class="filter-section" id="filterSection" aria-label="Category filters"></section>
+
+  <!-- Toolbar -->
+  <div class="toolbar">
+    <span class="result-count" id="resultCount"></span>
+    <button class="sort-btn" id="sortBtnToolbar">
+      <span class="material-symbols-rounded">sort</span>
+      <span id="sortLabel">Name A–Z</span>
+    </button>
+    <button class="view-btn" id="viewToggleToolbar">
+      <span class="material-symbols-rounded" id="viewIconToolbar">grid_view</span>
+    </button>
+  </div>
+
+  <!-- Projects -->
+  <main class="projects-container" id="projectsContainer">
+    <div id="projectsOutput"></div>
+  </main>
+
+  <!-- Footer -->
+  <footer class="app-footer" id="appFooter">
+    <span id="footerText"></span>
+  </footer>
+
+  <!-- Sort Menu -->
+  <div class="menu-backdrop" id="sortBackdrop"></div>
+  <div class="sort-menu" id="sortMenu" role="menu">
+    <div class="sort-menu-header" id="sortMenuHeader">Sort by</div>
+  </div>
+
+  <!-- Theme Menu -->
+  <div class="theme-menu" id="themeMenu" role="menu">
+    <div class="sort-menu-header" id="themeMenuHeader">Theme</div>
+  </div>
+
+  <!-- Bottom Navigation (Mobile) -->
+  <nav class="bottom-nav" id="bottomNav" aria-label="Bottom navigation">
+    <div class="bottom-nav-item active" id="bnHome" onclick="app.bottomNavSelect('home')">
+      <div class="bottom-nav-indicator"></div>
+      <span class="material-symbols-rounded icon-fill">home</span>
+      <span class="bottom-nav-label" id="bnHomeLabel">Home</span>
+    </div>
+    <div class="bottom-nav-item" id="bnSort" onclick="app.showSortMenu()">
+      <div class="bottom-nav-indicator"></div>
+      <span class="material-symbols-rounded">sort</span>
+      <span class="bottom-nav-label" id="bnSortLabel">Sort</span>
+    </div>
+    <div class="bottom-nav-item" id="bnLang" onclick="app.toggleLang()">
+      <div class="bottom-nav-indicator"></div>
+      <span class="material-symbols-rounded">translate</span>
+      <span class="bottom-nav-label" id="bnLangLabel">Language</span>
+    </div>
+    <div class="bottom-nav-item" id="bnTheme" onclick="app.cycleTheme()">
+      <div class="bottom-nav-indicator"></div>
+      <span class="material-symbols-rounded" id="bnThemeIcon">brightness_6</span>
+      <span class="bottom-nav-label" id="bnThemeLabel">Theme</span>
+    </div>
+  </nav>
+
+  <script>
+  // ─── TRANSLATIONS ───────────────────────────────────────────────
+  const T = {
+    en: {
+      appTitle: 'Project List',
+      search: 'Search projects…',
+      all: 'All',
+      sortBy: 'Sort by',
+      nameAZ: 'Name A–Z',
+      nameZA: 'Name Z–A',
+      categoryAZ: 'Category A–Z',
+      newest: 'Newest',
+      results: (n) => `${n} project${n !== 1 ? 's' : ''}`,
+      noResults: 'No projects found',
+      noResultsSub: 'Try adjusting your search or filters.',
+      resetFilters: 'Reset filters',
+      visitProject: 'Visit',
+      sourceCode: 'Source',
+      theme: 'Theme',
+      themeLight: 'Light',
+      themeDark: 'Dark',
+      themeSystem: 'System',
+      loading: 'Loading projects…',
+      errorTitle: 'Failed to load',
+      errorMsg: 'Could not fetch project data. Check your connection.',
+      gridView: 'Grid view',
+      listView: 'List view',
+      footerBy: 'Made by',
+      footerAI: 'with AI assistance from Claude',
+      home: 'Home',
+      sort: 'Sort',
+      language: 'Language',
+    },
+    vi: {
+      appTitle: 'Danh Sách Dự Án',
+      search: 'Tìm kiếm dự án…',
+      all: 'Tất cả',
+      sortBy: 'Sắp xếp',
+      nameAZ: 'Tên A–Z',
+      nameZA: 'Tên Z–A',
+      categoryAZ: 'Danh mục A–Z',
+      newest: 'Mới nhất',
+      results: (n) => `${n} dự án`,
+      noResults: 'Không tìm thấy dự án',
+      noResultsSub: 'Thử thay đổi từ khóa hoặc bộ lọc.',
+      resetFilters: 'Xóa bộ lọc',
+      visitProject: 'Xem',
+      sourceCode: 'Code',
+      theme: 'Giao diện',
+      themeLight: 'Sáng',
+      themeDark: 'Tối',
+      themeSystem: 'Hệ thống',
+      loading: 'Đang tải dự án…',
+      errorTitle: 'Không thể tải dữ liệu',
+      errorMsg: 'Không thể lấy dữ liệu. Vui lòng kiểm tra kết nối.',
+      gridView: 'Lưới',
+      listView: 'Danh sách',
+      footerBy: 'Tạo bởi',
+      footerAI: 'với sự hỗ trợ của Claude AI',
+      home: 'Trang chủ',
+      sort: 'Sắp xếp',
+      language: 'Ngôn ngữ',
+    }
+  };
+
+  // ─── APP STATE ──────────────────────────────────────────────────
+  const SHEET_ID = '1eyJ1EReaig8bkaHwHgDoNtvlLO2XSxxE3VrMRP3YHeA';
+  const SHEET_URL = `https://docs.google.com/spreadsheets/d/${SHEET_ID}/gviz/tq?tqx=out:json&sheet=Sheet1`;
+
+  const app = {
+    data: [],
+    filtered: [],
+    lang: localStorage.getItem('pl_lang') || 'en',
+    theme: localStorage.getItem('pl_theme') || 'system',
+    view: localStorage.getItem('pl_view') || 'grid',
+    sort: localStorage.getItem('pl_sort') || 'nameAZ',
+    category: localStorage.getItem('pl_category') || 'all',
+    query: '',
+    menuOpen: null,
+
+    get t() { return T[this.lang]; },
+
+    // ── Init ──
+    async init() {
+      this.applyTheme();
+      this.applyLang();
+      this.applyView();
+      this.renderSkeletons();
+      this.bindEvents();
+
+      try {
+        await this.fetchData();
+        this.buildCategoryChips();
+        this.applyFilters();
+      } catch(e) {
+        this.renderError();
+      }
+    },
+
+    // ── Fetch Data from Google Sheets ──
+    async fetchData() {
+      const res = await fetch(SHEET_URL);
+      const text = await res.text();
+      // GViz returns: google.visualization.Query.setResponse({...});
+      const json = JSON.parse(text.replace(/^[^(]+\(/, '').replace(/\);?\s*$/, ''));
+      const rows = json.table.rows;
+      const cols = json.table.cols.map(c => c.label.toLowerCase().trim());
+
+      this.data = rows.map((row, idx) => {
+        const obj = { _idx: idx };
+        cols.forEach((col, i) => {
+          obj[col] = row.c[i]?.v ?? row.c[i]?.f ?? '';
+        });
+        return obj;
+      }).filter(r => r.name);
+    },
+
+    // ── Build Category Chips ──
+    buildCategoryChips() {
+      const cats = ['all', ...new Set(this.data.map(p => p.category).filter(Boolean).sort())];
+      const section = document.getElementById('filterSection');
+      section.innerHTML = cats.map(cat => `
+        <button class="chip ripple-container ${this.category === cat ? 'active' : ''}"
+          data-cat="${cat}" aria-pressed="${this.category === cat}">
+          ${cat === 'all'
+            ? `<span class="material-symbols-rounded">apps</span>${this.t.all}`
+            : `<span class="material-symbols-rounded">folder_open</span>${cat}`}
+        </button>
+      `).join('');
+      section.querySelectorAll('.chip').forEach(btn => {
+        btn.addEventListener('click', e => {
+          this.category = btn.dataset.cat;
+          localStorage.setItem('pl_category', this.category);
+          section.querySelectorAll('.chip').forEach(b => {
+            b.classList.toggle('active', b.dataset.cat === this.category);
+            b.setAttribute('aria-pressed', b.dataset.cat === this.category);
+          });
+          this.applyFilters();
+        });
+        this.addRipple(btn);
+      });
+    },
+
+    // ── Filter + Sort + Render ──
+    applyFilters() {
+      let list = [...this.data];
+      if (this.category !== 'all') list = list.filter(p => p.category === this.category);
+      if (this.query) {
+        const q = this.query.toLowerCase();
+        list = list.filter(p =>
+          (p.name || '').toLowerCase().includes(q) ||
+          (p.category || '').toLowerCase().includes(q)
+        );
+      }
+      // Sort
+      list = this.sortList(list);
+      this.filtered = list;
+      this.renderProjects();
+    },
+
+    sortList(list) {
+      const s = this.sort;
+      return list.slice().sort((a, b) => {
+        if (s === 'nameAZ') return (a.name||'').localeCompare(b.name||'');
+        if (s === 'nameZA') return (b.name||'').localeCompare(a.name||'');
+        if (s === 'categoryAZ') return (a.category||'').localeCompare(b.category||'');
+        if (s === 'newest') return b._idx - a._idx;
+        return 0;
+      });
+    },
+
+    // ── Render Projects ──
+    renderProjects() {
+      const out = document.getElementById('projectsOutput');
+      const count = document.getElementById('resultCount');
+      count.textContent = this.t.results(this.filtered.length);
+
+      if (!this.filtered.length) {
+        out.innerHTML = this.emptyHTML();
+        return;
+      }
+
+      if (this.view === 'grid') {
+        out.className = 'projects-grid';
+        out.innerHTML = this.filtered.map(p => this.cardHTML(p)).join('');
+      } else {
+        out.className = 'projects-list';
+        out.innerHTML = this.filtered.map(p => this.rowHTML(p)).join('');
+      }
+
+      // Bind card ripples
+      out.querySelectorAll('.ripple-container').forEach(el => this.addRipple(el));
+
+      // Lazy-load images
+      out.querySelectorAll('img[data-src]').forEach(img => {
+        const observer = new IntersectionObserver(entries => {
+          entries.forEach(entry => {
+            if (entry.isIntersecting) {
+              const el = entry.target;
+              el.src = el.dataset.src;
+              el.onload = () => el.style.opacity = 1;
+              el.onerror = () => {
+                // Replace with placeholder
+                const ph = document.createElement('div');
+                ph.className = el.className.replace('card-image','card-image-placeholder').replace('row-thumb','row-thumb-placeholder');
+                ph.innerHTML = `<span class="material-symbols-rounded">code</span>`;
+                el.replaceWith(ph);
+              };
+              observer.disconnect();
+            }
+          });
+        });
+        observer.observe(img);
+      });
+    },
+
+    cardHTML(p) {
+      const imgHTML = p.image
+        ? `<img class="card-image" data-src="${this.escAttr(p.image)}" src="" alt="${this.escAttr(p.name)}" style="opacity:0;transition:opacity 0.3s" loading="lazy" />`
+        : `<div class="card-image-placeholder"><span class="material-symbols-rounded">code</span></div>`;
+
+      const visitBtn = p.url
+        ? `<a class="card-btn card-btn-primary ripple-container" href="${this.escAttr(p.url)}" target="_blank" rel="noopener" onclick="event.stopPropagation()">
+            <span class="material-symbols-rounded">open_in_new</span>${this.t.visitProject}</a>`
+        : '';
+      const srcBtn = p.source_code
+        ? `<a class="card-btn card-btn-secondary ripple-container" href="${this.escAttr(p.source_code)}" target="_blank" rel="noopener" onclick="event.stopPropagation()">
+            <span class="material-symbols-rounded">code</span>${this.t.sourceCode}</a>`
+        : '';
+
+      return `
+        <article class="project-card ripple-container" role="article" aria-label="${this.escAttr(p.name)}">
+          ${imgHTML}
+          <div class="card-body">
+            ${p.category ? `<span class="card-category">${this.esc(p.category)}</span>` : ''}
+            <h2 class="card-name">${this.esc(p.name)}</h2>
+            ${visitBtn || srcBtn ? `<div class="card-actions">${visitBtn}${srcBtn}</div>` : ''}
+          </div>
+        </article>`;
+    },
+
+    rowHTML(p) {
+      const imgHTML = p.image
+        ? `<img class="row-thumb" data-src="${this.escAttr(p.image)}" src="" alt="" style="opacity:0;transition:opacity 0.3s" loading="lazy" />`
+        : `<div class="row-thumb-placeholder"><span class="material-symbols-rounded">code</span></div>`;
+
+      const visitBtn = p.url
+        ? `<a class="row-icon-btn" href="${this.escAttr(p.url)}" target="_blank" rel="noopener" title="${this.t.visitProject}" onclick="event.stopPropagation()">
+            <span class="material-symbols-rounded">open_in_new</span></a>`
+        : '';
+      const srcBtn = p.source_code
+        ? `<a class="row-icon-btn" href="${this.escAttr(p.source_code)}" target="_blank" rel="noopener" title="${this.t.sourceCode}" onclick="event.stopPropagation()">
+            <span class="material-symbols-rounded">code</span></a>`
+        : '';
+
+      return `
+        <div class="project-row ripple-container" role="article" aria-label="${this.escAttr(p.name)}">
+          ${imgHTML}
+          <div class="row-info">
+            <div class="row-name">${this.esc(p.name)}</div>
+            ${p.category ? `<div class="row-category">${this.esc(p.category)}</div>` : ''}
+          </div>
+          <div class="row-actions">${visitBtn}${srcBtn}</div>
+        </div>`;
+    },
+
+    emptyHTML() {
+      return `
+        <div class="empty-state">
+          <div class="empty-icon"><span class="material-symbols-rounded">search_off</span></div>
+          <div class="empty-title">${this.t.noResults}</div>
+          <div class="empty-subtitle">${this.t.noResultsSub}</div>
+          <button class="empty-reset" onclick="app.resetFilters()">${this.t.resetFilters}</button>
+        </div>`;
+    },
+
+    renderSkeletons() {
+      const out = document.getElementById('projectsOutput');
+      out.className = 'projects-grid';
+      out.innerHTML = Array(6).fill(0).map(() => `
+        <div class="skeleton-card">
+          <div class="skeleton skeleton-image"></div>
+          <div class="skeleton-body">
+            <div class="skeleton skeleton-tag"></div>
+            <div class="skeleton skeleton-title"></div>
+            <div class="skeleton skeleton-title-sm"></div>
+            <div class="skeleton-actions">
+              <div class="skeleton skeleton-btn"></div>
+              <div class="skeleton skeleton-btn"></div>
+            </div>
+          </div>
+        </div>`).join('');
+    },
+
+    renderError() {
+      const out = document.getElementById('projectsOutput');
+      out.innerHTML = `
+        <div class="error-state">
+          <span class="material-symbols-rounded error-icon">error_outline</span>
+          <div class="error-title">${this.t.errorTitle}</div>
+          <div class="error-msg">${this.t.errorMsg}</div>
+        </div>`;
+    },
+
+    resetFilters() {
+      this.query = '';
+      this.category = 'all';
+      document.getElementById('searchInput').value = '';
+      document.getElementById('searchClear').classList.remove('visible');
+      localStorage.removeItem('pl_category');
+      this.buildCategoryChips();
+      this.applyFilters();
+    },
+
+    // ── Sort Menu ──
+    showSortMenu() {
+      const menu = document.getElementById('sortMenu');
+      const backdrop = document.getElementById('sortBackdrop');
+      const btn = document.getElementById('sortBtnTop');
+      const rect = btn.getBoundingClientRect();
+      menu.style.top = (rect.bottom + 8) + 'px';
+
+      const themeMenu = document.getElementById('themeMenu');
+      themeMenu.classList.remove('visible');
+
+      const sortOptions = [
+        { key: 'nameAZ', icon: 'sort_by_alpha', label: () => this.t.nameAZ },
+        { key: 'nameZA', icon: 'sort_by_alpha', label: () => this.t.nameZA },
+        { key: 'categoryAZ', icon: 'category', label: () => this.t.categoryAZ },
+        { key: 'newest', icon: 'new_releases', label: () => this.t.newest },
+      ];
+
+      document.getElementById('sortMenuHeader').textContent = this.t.sortBy;
+      menu.querySelectorAll('.sort-option').forEach(e => e.remove());
+
+      sortOptions.forEach(opt => {
+        const el = document.createElement('div');
+        el.className = `sort-option ripple-container${this.sort === opt.key ? ' active' : ''}`;
+        el.setAttribute('role', 'menuitem');
+        el.innerHTML = `<span class="material-symbols-rounded">${opt.icon}</span>${opt.label()}<span class="material-symbols-rounded sort-check">check</span>`;
+        el.addEventListener('click', () => {
+          this.sort = opt.key;
+          localStorage.setItem('pl_sort', this.sort);
+          this.updateSortLabel();
+          this.applyFilters();
+          this.closemenus();
+        });
+        this.addRipple(el);
+        menu.appendChild(el);
+      });
+
+      const isOpen = menu.classList.contains('visible');
+      this.closemenus();
+      if (!isOpen) {
+        menu.classList.add('visible');
+        backdrop.classList.add('visible');
+        this.menuOpen = 'sort';
+      }
+    },
+
+    showThemeMenu() {
+      const menu = document.getElementById('themeMenu');
+      const backdrop = document.getElementById('sortBackdrop');
+      const btn = document.getElementById('themeBtnTop');
+      const rect = btn.getBoundingClientRect();
+      menu.style.top = (rect.bottom + 8) + 'px';
+
+      const sortMenu = document.getElementById('sortMenu');
+      sortMenu.classList.remove('visible');
+
+      const themes = [
+        { key: 'light', icon: 'light_mode', label: () => this.t.themeLight },
+        { key: 'dark',  icon: 'dark_mode', label: () => this.t.themeDark },
+        { key: 'system', icon: 'brightness_6', label: () => this.t.themeSystem },
+      ];
+
+      document.getElementById('themeMenuHeader').textContent = this.t.theme;
+      menu.querySelectorAll('.sort-option').forEach(e => e.remove());
+
+      themes.forEach(opt => {
+        const el = document.createElement('div');
+        el.className = `sort-option ripple-container${this.theme === opt.key ? ' active' : ''}`;
+        el.setAttribute('role', 'menuitem');
+        el.innerHTML = `<span class="material-symbols-rounded">${opt.icon}</span>${opt.label()}<span class="material-symbols-rounded sort-check">check</span>`;
+        el.addEventListener('click', () => {
+          this.theme = opt.key;
+          localStorage.setItem('pl_theme', this.theme);
+          this.applyTheme();
+          this.closemenus();
+        });
+        this.addRipple(el);
+        menu.appendChild(el);
+      });
+
+      const isOpen = menu.classList.contains('visible');
+      this.closemenus();
+      if (!isOpen) {
+        menu.classList.add('visible');
+        backdrop.classList.add('visible');
+        this.menuOpen = 'theme';
+      }
+    },
+
+    closemenus() {
+      document.getElementById('sortMenu').classList.remove('visible');
+      document.getElementById('themeMenu').classList.remove('visible');
+      document.getElementById('sortBackdrop').classList.remove('visible');
+      this.menuOpen = null;
+    },
+
+    updateSortLabel() {
+      const labels = { nameAZ: () => this.t.nameAZ, nameZA: () => this.t.nameZA,
+        categoryAZ: () => this.t.categoryAZ, newest: () => this.t.newest };
+      document.getElementById('sortLabel').textContent = labels[this.sort]?.() ?? '';
+    },
+
+    // ── Theme ──
+    applyTheme() {
+      const root = document.documentElement;
+      const meta = document.getElementById('meta-theme');
+      if (this.theme === 'dark') {
+        root.setAttribute('data-theme', 'dark');
+        root.classList.add('dark-mode');
+        meta.content = '#111316';
+      } else if (this.theme === 'light') {
+        root.setAttribute('data-theme', 'light');
+        root.classList.remove('dark-mode');
+        meta.content = '#1976D2';
+      } else {
+        root.setAttribute('data-theme', 'system');
+        const prefersDark = window.matchMedia('(prefers-color-scheme: dark)').matches;
+        root.classList.toggle('dark-mode', prefersDark);
+        meta.content = prefersDark ? '#111316' : '#1976D2';
+      }
+      this.updateThemeIcon();
+    },
+
+    cycleTheme() {
+      const order = ['light','dark','system'];
+      const idx = order.indexOf(this.theme);
+      this.theme = order[(idx+1) % order.length];
+      localStorage.setItem('pl_theme', this.theme);
+      this.applyTheme();
+    },
+
+    updateThemeIcon() {
+      const icons = { light: 'light_mode', dark: 'dark_mode', system: 'brightness_6' };
+      const ic = icons[this.theme] || 'brightness_6';
+      document.getElementById('themeIconTop').textContent = ic;
+      document.getElementById('bnThemeIcon').textContent = ic;
+    },
+
+    // ── Language ──
+    applyLang() {
+      document.documentElement.lang = this.lang;
+      document.getElementById('appTitle').textContent = this.t.appTitle;
+      document.getElementById('searchInput').placeholder = this.t.search;
+      document.getElementById('langLabel').textContent = this.lang === 'en' ? 'EN' : 'VI';
+      document.getElementById('bnHomeLabel').textContent = this.t.home;
+      document.getElementById('bnSortLabel').textContent = this.t.sort;
+      document.getElementById('bnLangLabel').textContent = this.t.language;
+      document.getElementById('bnThemeLabel').textContent = this.t.theme;
+      document.getElementById('appFooter').innerHTML = `
+        ${this.t.footerBy} <a href="#" target="_blank">trongsigmaprovip</a> · ${this.t.footerAI}`;
+      this.updateSortLabel();
+      if (this.data.length) {
+        const count = document.getElementById('resultCount');
+        count.textContent = this.t.results(this.filtered.length);
+      }
+    },
+
+    toggleLang() {
+      this.lang = this.lang === 'en' ? 'vi' : 'en';
+      localStorage.setItem('pl_lang', this.lang);
+      this.applyLang();
+      if (this.data.length) this.buildCategoryChips();
+    },
+
+    // ── View ──
+    applyView() {
+      const gridIcon = this.view === 'grid' ? 'view_list' : 'grid_view';
+      document.getElementById('viewIcon').textContent = gridIcon;
+      document.getElementById('viewIconToolbar').textContent = gridIcon;
+    },
+
+    toggleView() {
+      this.view = this.view === 'grid' ? 'list' : 'grid';
+      localStorage.setItem('pl_view', this.view);
+      this.applyView();
+      if (this.filtered.length) this.renderProjects();
+    },
+
+    bottomNavSelect(tab) {
+      document.querySelectorAll('.bottom-nav-item').forEach(el => el.classList.remove('active'));
+      document.getElementById('bn' + tab.charAt(0).toUpperCase() + tab.slice(1))?.classList.add('active');
+    },
+
+    // ── Ripple ──
+    addRipple(el) {
+      el.addEventListener('pointerdown', e => {
+        const rect = el.getBoundingClientRect();
+        const size = Math.max(rect.width, rect.height) * 2;
+        const x = e.clientX - rect.left - size/2;
+        const y = e.clientY - rect.top - size/2;
+        const ripple = document.createElement('span');
+        ripple.className = 'ripple';
+        ripple.style.cssText = `width:${size}px;height:${size}px;left:${x}px;top:${y}px`;
+        el.appendChild(ripple);
+        setTimeout(() => ripple.remove(), 600);
+      });
+    },
+
+    // ── Bind Events ──
+    bindEvents() {
+      // Scroll
+      window.addEventListener('scroll', () => {
+        document.getElementById('topBar').classList.toggle('scrolled', window.scrollY > 4);
+      }, { passive: true });
+
+      // Search
+      const searchInput = document.getElementById('searchInput');
+      const clearBtn = document.getElementById('searchClear');
+      searchInput.addEventListener('input', () => {
+        this.query = searchInput.value;
+        clearBtn.classList.toggle('visible', this.query.length > 0);
+        this.applyFilters();
+      });
+      clearBtn.addEventListener('click', () => {
+        searchInput.value = '';
+        this.query = '';
+        clearBtn.classList.remove('visible');
+        this.applyFilters();
+        searchInput.focus();
+      });
+
+      // Sort buttons
+      document.getElementById('sortBtnTop').addEventListener('click', () => this.showSortMenu());
+      document.getElementById('sortBtnToolbar').addEventListener('click', () => this.showSortMenu());
+      document.getElementById('sortBackdrop').addEventListener('click', () => this.closemenus());
+
+      // Theme
+      document.getElementById('themeBtnTop').addEventListener('click', () => this.showThemeMenu());
+
+      // View toggle
+      document.getElementById('viewToggleBtn').addEventListener('click', () => this.toggleView());
+      document.getElementById('viewToggleToolbar').addEventListener('click', () => this.toggleView());
+
+      // Lang
+      document.getElementById('langToggle').addEventListener('click', () => this.toggleLang());
+
+      // System theme change
+      window.matchMedia('(prefers-color-scheme: dark)').addEventListener('change', () => {
+        if (this.theme === 'system') this.applyTheme();
+      });
+
+      // Keyboard
+      document.addEventListener('keydown', e => {
+        if (e.key === 'Escape') this.closemenus();
+        if ((e.ctrlKey || e.metaKey) && e.key === 'k') {
+          e.preventDefault();
+          document.getElementById('searchInput').focus();
+        }
+      });
+    },
+
+    // ── Utils ──
+    esc(str) {
+      return String(str ?? '').replace(/&/g,'&amp;').replace(/</g,'&lt;').replace(/>/g,'&gt;');
+    },
+    escAttr(str) {
+      return String(str ?? '').replace(/"/g,'&quot;').replace(/'/g,'&#39;');
+    }
+  };
+
+  // ─── PWA ──────────────────────────────────────────────────────
+  if ('serviceWorker' in navigator) {
+    navigator.serviceWorker.register('sw.js').catch(() => {});
+  }
+
+  // ─── BOOT ─────────────────────────────────────────────────────
+  app.init();
+  </script>
+</body>
+</html>
