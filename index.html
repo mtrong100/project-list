@@ -934,7 +934,10 @@ const THEME_ICONS = {
 // APP
 // ══════════════════════════════════════════════
 const SHEET_ID = '1eyJ1EReaig8bkaHwHgDoNtvlLO2XSxxE3VrMRP3YHeA';
-const SHEET_URL = `https://docs.google.com/spreadsheets/d/${SHEET_ID}/gviz/tq?tqx=out:json`;
+const SHEET_URLS = [
+  `https://docs.google.com/spreadsheets/d/${SHEET_ID}/gviz/tq?tqx=out:json&headers=1`,
+  `https://docs.google.com/spreadsheets/d/${SHEET_ID}/gviz/tq?tqx=out:json`,
+];
 
 const LS = {
   get: (k, d='') => { try { return localStorage.getItem('pl_'+k) ?? d; } catch { return d; } },
@@ -963,21 +966,54 @@ const app = {
       this.buildChips();
       this.applyFilters();
     } catch(e) {
-      this.renderError();
+      this.renderError(e);
     }
   },
 
   async fetchData() {
-    const res = await fetch(SHEET_URL);
-    if (!res.ok) throw new Error('HTTP '+res.status);
-    const text = await res.text();
-    const json = JSON.parse(text.replace(/^[^\(]+\(/, '').replace(/\);\s*$/, ''));
-    const cols = json.table.cols.map(c => (c.label||'').toLowerCase().trim());
-    this.data = json.table.rows.map((row, i) => {
-      const o = {_i: i};
-      cols.forEach((c, j) => { o[c] = row.c[j]?.v ?? row.c[j]?.f ?? ''; });
-      return o;
-    }).filter(r => r.name);
+    let lastErr = null;
+    for (const url of SHEET_URLS) {
+      try {
+        const res = await fetch(url, { cache: 'no-store' });
+        if (!res.ok) { lastErr = new Error('HTTP '+res.status); continue; }
+        const text = await res.text();
+        const match = text.match(/\{.*\}/s);
+        if (!match) { lastErr = new Error('Unexpected response format'); continue; }
+        const json = JSON.parse(match[0]);
+        if (!json.table || !json.table.rows) { lastErr = new Error('No table data'); continue; }
+
+        let cols = json.table.cols.map(c => (c.label || c.id || '').toString().toLowerCase().trim());
+        let rows = json.table.rows;
+
+        // Fallback: header row not detected (cols are empty or generic "a","b","c")
+        const looksGeneric = cols.every(c => !c || /^[a-z]$/.test(c));
+        if (looksGeneric && rows.length) {
+          const headerRow = rows[0].c.map(c => (c?.v ?? c?.f ?? '').toString().toLowerCase().trim());
+          if (headerRow.includes('name')) {
+            cols = headerRow;
+            rows = rows.slice(1);
+          }
+        }
+
+        const parsed = rows.map((row, i) => {
+          const o = { _i: i };
+          cols.forEach((c, j) => {
+            if (!c) return;
+            const cell = row.c[j];
+            o[c] = (cell?.v ?? cell?.f ?? '').toString().trim();
+          });
+          return o;
+        }).filter(r => r.name);
+
+        if (!parsed.length) { lastErr = new Error('No rows with a "name" column found'); continue; }
+
+        this.data = parsed;
+        return;
+      } catch (e) {
+        lastErr = e;
+      }
+    }
+    throw lastErr || new Error('Unknown error');
   },
 
   buildChips() {
@@ -1135,12 +1171,15 @@ const app = {
       </div>`).join('');
   },
 
-  renderError() {
+  renderError(err) {
+    const detail = err ? this.e(err.message || String(err)) : '';
     document.getElementById('projectsOutput').innerHTML = `
       <div class="error-state">
         <div class="state-icon-wrap error-icon-wrap"><span class="icon icon-lg">${use('ic-error',32)}</span></div>
         <div class="state-title">${this.t.errTitle}</div>
         <div class="state-body">${this.t.errMsg}</div>
+        ${detail ? `<div class="state-body" style="font-family:monospace;font-size:12px;opacity:.7">${detail}</div>` : ''}
+        <button class="btn-tonal-reset" onclick="location.reload()">↻</button>
       </div>`;
   },
 
