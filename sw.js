@@ -1,4 +1,4 @@
-const CACHE_NAME = 'project-list-v1';
+const CACHE_NAME = 'project-list-md3-v1';
 const ASSETS = [
   './',
   './index.html',
@@ -8,9 +8,7 @@ const ASSETS = [
 ];
 
 self.addEventListener('install', e => {
-  e.waitUntil(
-    caches.open(CACHE_NAME).then(cache => cache.addAll(ASSETS))
-  );
+  e.waitUntil(caches.open(CACHE_NAME).then(c => c.addAll(ASSETS)));
   self.skipWaiting();
 });
 
@@ -24,8 +22,7 @@ self.addEventListener('activate', e => {
 });
 
 self.addEventListener('fetch', e => {
-  if (e.request.url.includes('docs.google.com')) return; // always fresh for data
-  e.respondWith(
-    caches.match(e.request).then(cached => cached || fetch(e.request))
-  );
+  if (e.request.url.includes('docs.google.com')) return;
+  if (e.request.url.includes('fonts.g')) return;
+  e.respondWith(caches.match(e.request).then(c => c || fetch(e.request)));
 });

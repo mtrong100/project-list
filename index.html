@@ -2,1366 +2,1359 @@
 <html lang="en" data-theme="system">
 <head>
   <meta charset="UTF-8" />
-  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <meta name="description" content="A curated list of projects — filter, sort, and search with ease." />
-  <meta name="theme-color" content="#1976D2" id="meta-theme" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0, viewport-fit=cover" />
+  <meta name="description" content="A curated list of projects — filter, sort, and search." />
+  <meta name="theme-color" content="#1565C0" id="meta-theme" />
   <meta name="mobile-web-app-capable" content="yes" />
   <meta name="apple-mobile-web-app-capable" content="yes" />
   <meta name="apple-mobile-web-app-status-bar-style" content="default" />
   <meta name="apple-mobile-web-app-title" content="Project List" />
   <title>Project List</title>
-
-  <!-- PWA -->
   <link rel="manifest" href="manifest.json" />
-  <link rel="icon" type="image/png" href="favicon.png" />
-  <link rel="apple-touch-icon" href="icons/icon-152.png" />
+  <link rel="icon" type="image/png" href="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAACAAAAAgCAYAAABzenr0AAABSklEQVR4nO1XXUrDQBD+VvYAmp+HPYRHEARBEHwVWoQU0V7BswiCIAi+ihapRWjPoIcIaPUIMz40G9rdzVOWHUE/GDZ8A5nZL1+SHWUu3xAAh8gIUC6hmShFYff+bSMaTG4yBdg2oZk4dfGNJtYVEIEGscTuLVjzL1BAuAFpBfivK7DFxAjFx9Ve3ZWLGaq4mHvP4PN6v7bX5XhhGu69727L8WLXUwDEcKM8nxsAq9XyMRCopfKzV1EXBhUAMZY3B3VXLmaovHrxFFjeHrYeKEYz03C9PVCMZr4HmAlu5NXUAEBeTY3lYiBUS2Wnz7IeCHXFTPi6O6q7cjFD7QyePAW+749bD2TDiWm43h7IhpPAd4AJbmSDRwNgtVo+BgK11PbJg6gHxH9G8geS/yMZMynIzAUAoOQVaN4CCRU2RrPUTQSH0/VEsvH8B+mLukk82WzYAAAAAElFTkSuQmCC" />
+  <link rel="apple-touch-icon" href="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAADAAAAAwCAYAAABXAvmHAAABnklEQVR4nO2aXUrDQBDHZyEHsGkq5BBeQUEURME3FVvFVlFv4F0UREEUfFOxVWwV9Qj1EAX7cQTHh7Dpmo+NeUgys+T/VDIDOz/mI6Gzwj3pg0aoM+YoEWewEH+inlMJXErGEwKxAEOxUgteFUIAIghAOXipPxAqAIfgpXwICz0ATsFLIQCIqB5gJQuQNQHyzwDvBES/B1ipBChaZQ8ULfMBvk/nB/L37PGnm3lEKSWcw/dYguHZwiD4rHb04Sr2r6wCU86b09nTl1DeJZdwHnsA4ey/aj2G54t+GdUO3uj1QLXVYz2GEktodLHkZ8Bp9QhmYO8llmB0uRyaQk6z6yr2zKeQ0+waPoXSfgvl/e2UdJ6wd560HuOrFb+MqrvP9HrAbnTMnkLj69VpBhodehmobD/GEkxu1kJTyK63XcWe+RSy623DpxB3AFHZvNd6TG7X/TKytx7o9cDMxp3ZU4i6SoCiVf4vVLRKgKJlIaIAnjsyAFN2ZADeypIbibdmVTLACWK66A68BzhAaK8aSAeqEP+67KE6UgGJvW7zCwPjxeYL9nptAAAAAElFTkSuQmCC" />
 
-  <!-- Google Fonts: Be Vietnam Pro — full Vietnamese support -->
-  <link rel="preconnect" href="https://fonts.googleapis.com" />
-  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <!-- Google Fonts: Be Vietnam Pro (full Vietnamese support) -->
+  <link rel="preconnect" href="https://fonts.googleapis.com" crossorigin />
   <link href="https://fonts.googleapis.com/css2?family=Be+Vietnam+Pro:ital,wght@0,300;0,400;0,500;0,600;0,700;1,400&display=swap" rel="stylesheet" />
-  <!-- Material Symbols -->
-  <link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Rounded:opsz,wght,FILL,GRAD@20..48,100..700,0..1,-50..200" rel="stylesheet" />
 
-  <style>
-    /* ─── CSS Custom Properties (MD3 tokens) ─── */
-    :root {
-      --md-primary: #1976D2;
-      --md-on-primary: #ffffff;
-      --md-primary-container: #D1E4FF;
-      --md-on-primary-container: #001D36;
-      --md-secondary: #546E8C;
-      --md-on-secondary: #ffffff;
-      --md-secondary-container: #D6E4F7;
-      --md-tertiary: #6B5778;
-      --md-surface: #F8F9FA;
-      --md-surface-1: #EEF4FB;
-      --md-surface-2: #E4EDF8;
-      --md-surface-variant: #DDE3EA;
-      --md-on-surface: #1A1C1E;
-      --md-on-surface-variant: #42474E;
-      --md-outline: #72787E;
-      --md-outline-variant: #C2C7CE;
-      --md-background: #F8F9FA;
-      --md-on-background: #1A1C1E;
-      --md-error: #BA1A1A;
-      --md-shadow: rgba(0,0,0,0.12);
-      --md-scrim: rgba(0,0,0,0.32);
-      --md-elevation-1: 0 1px 2px rgba(0,0,0,.10), 0 1px 3px 1px rgba(0,0,0,.08);
-      --md-elevation-2: 0 1px 2px rgba(0,0,0,.10), 0 2px 6px 2px rgba(0,0,0,.08);
-      --md-elevation-3: 0 1px 3px rgba(0,0,0,.10), 0 4px 8px 3px rgba(0,0,0,.10);
-      --font: 'Be Vietnam Pro', sans-serif;
-      --radius-xs: 4px;
-      --radius-sm: 8px;
-      --radius-md: 12px;
-      --radius-lg: 16px;
-      --radius-xl: 24px;
-      --radius-full: 9999px;
-      --transition: 0.2s cubic-bezier(0.2, 0, 0, 1);
-      --nav-height: 64px;
-      --bottom-nav-height: 80px;
-    }
+<style>
+/* ══════════════════════════════════════════════
+   MATERIAL DESIGN 3 — TOKENS (Light Scheme)
+   Based on MD3 Baseline + Blue primary
+══════════════════════════════════════════════ */
+:root {
+  /* Primary */
+  --md-sys-color-primary:                  #1565C0;
+  --md-sys-color-on-primary:               #FFFFFF;
+  --md-sys-color-primary-container:        #D6E4FF;
+  --md-sys-color-on-primary-container:     #001945;
+  /* Secondary */
+  --md-sys-color-secondary:               #555F71;
+  --md-sys-color-on-secondary:            #FFFFFF;
+  --md-sys-color-secondary-container:     #D9E3F8;
+  --md-sys-color-on-secondary-container:  #121C2B;
+  /* Tertiary */
+  --md-sys-color-tertiary:                #6E5676;
+  --md-sys-color-on-tertiary:             #FFFFFF;
+  --md-sys-color-tertiary-container:      #F6D9FF;
+  --md-sys-color-on-tertiary-container:   #27103B;
+  /* Error */
+  --md-sys-color-error:                   #BA1A1A;
+  --md-sys-color-on-error:                #FFFFFF;
+  --md-sys-color-error-container:         #FFDAD6;
+  --md-sys-color-on-error-container:      #410002;
+  /* Surface */
+  --md-sys-color-surface-dim:             #D9D9E0;
+  --md-sys-color-surface:                 #F9F9FF;
+  --md-sys-color-surface-bright:          #F9F9FF;
+  --md-sys-color-surface-container-lowest:#FFFFFF;
+  --md-sys-color-surface-container-low:   #F3F3FA;
+  --md-sys-color-surface-container:       #EDEDF4;
+  --md-sys-color-surface-container-high:  #E7E7EE;
+  --md-sys-color-surface-container-highest:#E2E2E9;
+  --md-sys-color-on-surface:              #1A1B21;
+  --md-sys-color-on-surface-variant:      #44474E;
+  /* Outline */
+  --md-sys-color-outline:                 #74777F;
+  --md-sys-color-outline-variant:         #C4C6CF;
+  /* Background */
+  --md-sys-color-background:              #F9F9FF;
+  --md-sys-color-on-background:           #1A1B21;
+  /* Inverse */
+  --md-sys-color-inverse-surface:         #2F3036;
+  --md-sys-color-inverse-on-surface:      #F1F0F7;
+  --md-sys-color-inverse-primary:         #ACC7FF;
+  /* Scrim */
+  --md-sys-color-scrim:                   rgba(0,0,0,0.32);
+  --md-sys-color-shadow:                  rgba(0,0,0,0.12);
 
-    [data-theme="dark"], .dark-mode {
-      --md-primary: #9DCAFF;
-      --md-on-primary: #003258;
-      --md-primary-container: #00497D;
-      --md-on-primary-container: #D1E4FF;
-      --md-secondary: #B8CADD;
-      --md-on-secondary: #233447;
-      --md-secondary-container: #3A4D5E;
-      --md-tertiary: #D4BEDF;
-      --md-surface: #1A1C1E;
-      --md-surface-1: #21252C;
-      --md-surface-2: #262B34;
-      --md-surface-variant: #42474E;
-      --md-on-surface: #E2E2E6;
-      --md-on-surface-variant: #C2C7CE;
-      --md-outline: #8C9199;
-      --md-outline-variant: #42474E;
-      --md-background: #111316;
-      --md-on-background: #E2E2E6;
-      --md-error: #FFB4AB;
-      --md-shadow: rgba(0,0,0,0.4);
-      --md-elevation-1: 0 1px 2px rgba(0,0,0,.3), 0 1px 3px 1px rgba(0,0,0,.25);
-      --md-elevation-2: 0 1px 2px rgba(0,0,0,.3), 0 2px 6px 2px rgba(0,0,0,.25);
-      --md-elevation-3: 0 1px 3px rgba(0,0,0,.3), 0 4px 8px 3px rgba(0,0,0,.25);
-    }
+  /* Elevation overlays (tonal surface) */
+  --md-elevation-1: 0 1px 2px rgba(0,0,0,.08), 0 1px 3px 1px rgba(0,0,0,.06);
+  --md-elevation-2: 0 1px 2px rgba(0,0,0,.08), 0 2px 6px 2px rgba(0,0,0,.07);
+  --md-elevation-3: 0 4px 8px 3px rgba(0,0,0,.09), 0 1px 3px rgba(0,0,0,.10);
 
-    /* ─── Reset & Base ─── */
-    *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
-    html { scroll-behavior: smooth; }
-    body {
-      font-family: var(--font);
-      background: var(--md-background);
-      color: var(--md-on-background);
-      min-height: 100vh;
-      transition: background var(--transition), color var(--transition);
-      overflow-x: hidden;
-    }
-    a { color: var(--md-primary); text-decoration: none; }
-    img { max-width: 100%; display: block; }
-    button { cursor: pointer; border: none; background: none; font-family: var(--font); }
+  /* Shape */
+  --md-shape-none:        0px;
+  --md-shape-xs:          4px;
+  --md-shape-sm:          8px;
+  --md-shape-md:          12px;
+  --md-shape-lg:          16px;
+  --md-shape-xl:          28px;
+  --md-shape-full:        9999px;
 
-    /* Material Symbols */
-    .material-symbols-rounded {
-      font-variation-settings: 'FILL' 0, 'wght' 400, 'GRAD' 0, 'opsz' 24;
-      user-select: none;
-      font-size: 24px;
-      line-height: 1;
-    }
-    .icon-fill { font-variation-settings: 'FILL' 1, 'wght' 400, 'GRAD' 0, 'opsz' 24; }
+  /* Typography */
+  --font: 'Be Vietnam Pro', system-ui, sans-serif;
 
-    /* ─── Top App Bar ─── */
-    .top-app-bar {
-      position: sticky;
-      top: 0;
-      z-index: 100;
-      height: var(--nav-height);
-      background: var(--md-surface-1);
-      border-bottom: 1px solid var(--md-outline-variant);
-      display: flex;
-      align-items: center;
-      padding: 0 8px 0 16px;
-      gap: 8px;
-      transition: background var(--transition), box-shadow var(--transition);
-    }
-    .top-app-bar.scrolled {
-      box-shadow: var(--md-elevation-2);
-    }
-    .app-title {
-      flex: 1;
-      display: flex;
-      align-items: center;
-      gap: 10px;
-    }
-    .app-title img { width: 32px; height: 32px; border-radius: 8px; }
-    .app-title h1 {
-      font-size: 22px;
-      font-weight: 600;
-      color: var(--md-on-surface);
-      letter-spacing: -0.2px;
-    }
-    .top-actions { display: flex; align-items: center; gap: 4px; }
-    .icon-btn {
-      width: 48px; height: 48px;
-      border-radius: var(--radius-full);
-      display: flex; align-items: center; justify-content: center;
-      color: var(--md-on-surface-variant);
-      transition: background var(--transition), color var(--transition);
-      position: relative;
-      overflow: hidden;
-    }
-    .icon-btn:hover { background: color-mix(in srgb, var(--md-on-surface) 8%, transparent); }
-    .icon-btn:active { background: color-mix(in srgb, var(--md-on-surface) 12%, transparent); }
-    .icon-btn.active { color: var(--md-primary); }
+  /* Motion */
+  --md-motion-standard:   cubic-bezier(0.2, 0, 0, 1);
+  --md-motion-decelerate: cubic-bezier(0, 0, 0, 1);
+  --md-motion-accelerate: cubic-bezier(0.3, 0, 1, 1);
+  --md-dur-short2: 100ms;
+  --md-dur-short4: 200ms;
+  --md-dur-medium2: 300ms;
+  --md-dur-medium4: 400ms;
+  --md-dur-long2: 500ms;
 
-    /* ─── Search Bar ─── */
-    .search-section {
-      padding: 12px 16px 8px;
-    }
-    .search-bar {
-      display: flex;
-      align-items: center;
-      background: var(--md-surface-variant);
-      border-radius: var(--radius-full);
-      padding: 0 8px 0 16px;
-      height: 52px;
-      gap: 8px;
-      transition: background var(--transition), box-shadow var(--transition);
-      border: 1px solid transparent;
-    }
-    .search-bar:focus-within {
-      background: var(--md-surface-2);
-      border-color: var(--md-primary);
-      box-shadow: 0 0 0 2px color-mix(in srgb, var(--md-primary) 20%, transparent);
-    }
-    .search-bar .material-symbols-rounded { color: var(--md-on-surface-variant); font-size: 22px; }
-    .search-bar input {
-      flex: 1;
-      border: none;
-      background: transparent;
-      font-family: var(--font);
-      font-size: 16px;
-      color: var(--md-on-surface);
-      outline: none;
-    }
-    .search-bar input::placeholder { color: var(--md-on-surface-variant); }
-    .search-clear {
-      width: 36px; height: 36px;
-      border-radius: var(--radius-full);
-      display: flex; align-items: center; justify-content: center;
-      color: var(--md-on-surface-variant);
-      opacity: 0;
-      pointer-events: none;
-      transition: opacity var(--transition);
-    }
-    .search-clear.visible { opacity: 1; pointer-events: auto; }
-    .search-clear:hover { background: color-mix(in srgb, var(--md-on-surface) 8%, transparent); }
+  /* Layout */
+  --nav-height: 64px;
+  --bottom-nav-height: 80px;
+}
 
-    /* ─── Filter Chips ─── */
-    .filter-section {
-      padding: 4px 16px 12px;
-      display: flex;
-      gap: 8px;
-      overflow-x: auto;
-      scrollbar-width: none;
-    }
-    .filter-section::-webkit-scrollbar { display: none; }
-    .chip {
-      display: inline-flex;
-      align-items: center;
-      gap: 6px;
-      padding: 6px 16px;
-      border-radius: var(--radius-full);
-      font-size: 14px;
-      font-weight: 500;
-      font-family: var(--font);
-      white-space: nowrap;
-      background: var(--md-surface-variant);
-      color: var(--md-on-surface-variant);
-      border: 1px solid var(--md-outline-variant);
-      cursor: pointer;
-      transition: all var(--transition);
-      height: 36px;
-    }
-    .chip:hover { background: color-mix(in srgb, var(--md-primary) 8%, var(--md-surface-variant)); }
-    .chip.active {
-      background: var(--md-secondary-container);
-      color: var(--md-on-surface);
-      border-color: var(--md-secondary-container);
-    }
-    .chip .material-symbols-rounded { font-size: 18px; }
+/* ─── Dark Scheme ─── */
+[data-theme="dark"] {
+  --md-sys-color-primary:                  #ACC7FF;
+  --md-sys-color-on-primary:               #002D6D;
+  --md-sys-color-primary-container:        #00429A;
+  --md-sys-color-on-primary-container:     #D6E4FF;
+  --md-sys-color-secondary:               #BBC7DB;
+  --md-sys-color-on-secondary:            #263141;
+  --md-sys-color-secondary-container:     #3D4758;
+  --md-sys-color-on-secondary-container:  #D9E3F8;
+  --md-sys-color-tertiary:                #D9B8E2;
+  --md-sys-color-on-tertiary:             #3D2546;
+  --md-sys-color-tertiary-container:      #553D5D;
+  --md-sys-color-on-tertiary-container:   #F6D9FF;
+  --md-sys-color-error:                   #FFB4AB;
+  --md-sys-color-on-error:                #690005;
+  --md-sys-color-error-container:         #93000A;
+  --md-sys-color-on-error-container:      #FFDAD6;
+  --md-sys-color-surface-dim:             #111318;
+  --md-sys-color-surface:                 #111318;
+  --md-sys-color-surface-bright:          #37393F;
+  --md-sys-color-surface-container-lowest:#0C0E13;
+  --md-sys-color-surface-container-low:   #191C22;
+  --md-sys-color-surface-container:       #1E2026;
+  --md-sys-color-surface-container-high:  #282A31;
+  --md-sys-color-surface-container-highest:#33353C;
+  --md-sys-color-on-surface:              #E2E2E9;
+  --md-sys-color-on-surface-variant:      #C4C6CF;
+  --md-sys-color-outline:                 #8E9099;
+  --md-sys-color-outline-variant:         #44474E;
+  --md-sys-color-background:              #111318;
+  --md-sys-color-on-background:           #E2E2E9;
+  --md-sys-color-inverse-surface:         #E2E2E9;
+  --md-sys-color-inverse-on-surface:      #2F3036;
+  --md-sys-color-inverse-primary:         #1565C0;
+  --md-elevation-1: 0 1px 2px rgba(0,0,0,.25), 0 1px 3px 1px rgba(0,0,0,.22);
+  --md-elevation-2: 0 1px 2px rgba(0,0,0,.28), 0 2px 6px 2px rgba(0,0,0,.22);
+  --md-elevation-3: 0 4px 8px 3px rgba(0,0,0,.28), 0 1px 3px rgba(0,0,0,.30);
+}
 
-    /* ─── Toolbar row ─── */
-    .toolbar {
-      padding: 0 16px 12px;
-      display: flex;
-      align-items: center;
-      gap: 8px;
-    }
-    .result-count {
-      flex: 1;
-      font-size: 13px;
-      color: var(--md-on-surface-variant);
-      font-weight: 500;
-    }
-    .sort-btn, .view-btn {
-      display: flex; align-items: center; gap: 6px;
-      padding: 6px 12px;
-      border-radius: var(--radius-md);
-      font-size: 13px;
-      font-weight: 500;
-      font-family: var(--font);
-      color: var(--md-on-surface-variant);
-      background: var(--md-surface-variant);
-      border: 1px solid var(--md-outline-variant);
-      cursor: pointer;
-      transition: all var(--transition);
-      height: 36px;
-    }
-    .sort-btn:hover, .view-btn:hover {
-      background: color-mix(in srgb, var(--md-primary) 8%, var(--md-surface-variant));
-    }
-    .sort-btn .material-symbols-rounded,
-    .view-btn .material-symbols-rounded { font-size: 18px; }
-    .view-btn.active {
-      background: var(--md-primary-container);
-      color: var(--md-on-primary-container);
-      border-color: var(--md-primary-container);
-    }
+/* ─── Reset ─── */
+*,*::before,*::after { box-sizing: border-box; margin: 0; padding: 0; }
+html { scroll-behavior: smooth; -webkit-text-size-adjust: 100%; }
+body {
+  font-family: var(--font);
+  background: var(--md-sys-color-background);
+  color: var(--md-sys-color-on-background);
+  min-height: 100vh;
+  min-height: 100dvh;
+  transition: background var(--md-dur-medium2) var(--md-motion-standard),
+              color var(--md-dur-medium2) var(--md-motion-standard);
+  overflow-x: hidden;
+}
+a { color: var(--md-sys-color-primary); text-decoration: none; }
+img { max-width: 100%; display: block; }
+button { cursor: pointer; border: none; background: none; font-family: var(--font); }
 
-    /* ─── Grid / List ─── */
-    .projects-container {
-      padding: 0 16px 100px;
-    }
-    .projects-grid {
-      display: grid;
-      grid-template-columns: repeat(auto-fill, minmax(300px, 1fr));
-      gap: 16px;
-    }
-    .projects-list {
-      display: flex;
-      flex-direction: column;
-      gap: 8px;
-    }
+/* ══════════════════════════════════════════════
+   SVG ICON SYSTEM
+══════════════════════════════════════════════ */
+.icon {
+  display: inline-flex; align-items: center; justify-content: center;
+  flex-shrink: 0;
+  width: 24px; height: 24px;
+}
+.icon svg { width: 100%; height: 100%; fill: currentColor; }
+.icon-sm svg { width: 20px; height: 20px; }
+.icon-lg svg { width: 32px; height: 32px; }
 
-    /* ─── Project Card (Grid) ─── */
-    .project-card {
-      background: var(--md-surface-1);
-      border-radius: var(--radius-xl);
-      border: 1px solid var(--md-outline-variant);
-      overflow: hidden;
-      transition: transform var(--transition), box-shadow var(--transition), background var(--transition);
-      cursor: pointer;
-      display: flex;
-      flex-direction: column;
-    }
-    .project-card:hover {
-      transform: translateY(-2px);
-      box-shadow: var(--md-elevation-3);
-    }
-    .project-card:active { transform: translateY(0); }
+/* ══════════════════════════════════════════════
+   TOP APP BAR — MD3 Small top app bar
+══════════════════════════════════════════════ */
+.top-app-bar {
+  position: sticky; top: 0; z-index: 200;
+  height: var(--nav-height);
+  background: var(--md-sys-color-surface-container);
+  display: flex; align-items: center;
+  padding: 0 4px;
+  transition: background var(--md-dur-medium2) var(--md-motion-standard),
+              box-shadow var(--md-dur-short4) var(--md-motion-standard);
+}
+.top-app-bar.scrolled {
+  background: var(--md-sys-color-surface-container-high);
+  box-shadow: var(--md-elevation-2);
+}
+.bar-leading { padding-left: 4px; }
+.bar-headline {
+  flex: 1; padding: 0 4px;
+  font-size: 22px; font-weight: 600; letter-spacing: -0.2px;
+  color: var(--md-sys-color-on-surface);
+  white-space: nowrap; overflow: hidden; text-overflow: ellipsis;
+}
+.bar-trailing { display: flex; align-items: center; padding-right: 4px; }
 
-    .card-image {
-      width: 100%;
-      aspect-ratio: 16/9;
-      object-fit: cover;
-      background: var(--md-surface-2);
-    }
-    .card-image-placeholder {
-      width: 100%;
-      aspect-ratio: 16/9;
-      background: linear-gradient(135deg, var(--md-primary-container), var(--md-secondary-container));
-      display: flex;
-      align-items: center;
-      justify-content: center;
-    }
-    .card-image-placeholder .material-symbols-rounded {
-      font-size: 48px;
-      color: var(--md-on-primary-container);
-      opacity: 0.6;
-    }
-    .card-body {
-      padding: 16px;
-      flex: 1;
-      display: flex;
-      flex-direction: column;
-      gap: 8px;
-    }
-    .card-category {
-      display: inline-flex;
-      align-items: center;
-      gap: 4px;
-      font-size: 11px;
-      font-weight: 600;
-      text-transform: uppercase;
-      letter-spacing: 0.8px;
-      color: var(--md-primary);
-      background: var(--md-primary-container);
-      padding: 3px 10px;
-      border-radius: var(--radius-full);
-      width: fit-content;
-    }
-    .card-name {
-      font-size: 16px;
-      font-weight: 600;
-      color: var(--md-on-surface);
-      line-height: 1.3;
-    }
-    .card-actions {
-      display: flex;
-      gap: 8px;
-      margin-top: auto;
-      padding-top: 8px;
-    }
-    .card-btn {
-      flex: 1;
-      display: flex; align-items: center; justify-content: center;
-      gap: 6px;
-      padding: 8px 12px;
-      border-radius: var(--radius-md);
-      font-size: 13px;
-      font-weight: 600;
-      font-family: var(--font);
-      cursor: pointer;
-      transition: all var(--transition);
-      text-decoration: none;
-      height: 36px;
-    }
-    .card-btn-primary {
-      background: var(--md-primary);
-      color: var(--md-on-primary);
-    }
-    .card-btn-primary:hover { background: color-mix(in srgb, var(--md-on-primary) 8%, var(--md-primary)); }
-    .card-btn-secondary {
-      background: var(--md-surface-variant);
-      color: var(--md-on-surface-variant);
-      border: 1px solid var(--md-outline-variant);
-    }
-    .card-btn-secondary:hover { background: color-mix(in srgb, var(--md-on-surface) 8%, var(--md-surface-variant)); }
-    .card-btn .material-symbols-rounded { font-size: 16px; }
+/* MD3 Icon Button */
+.md-icon-btn {
+  width: 48px; height: 48px;
+  border-radius: var(--md-shape-full);
+  display: flex; align-items: center; justify-content: center;
+  color: var(--md-sys-color-on-surface-variant);
+  position: relative; overflow: hidden;
+  transition: background var(--md-dur-short4) var(--md-motion-standard),
+              color var(--md-dur-short4) var(--md-motion-standard);
+}
+.md-icon-btn::before {
+  content: ''; position: absolute; inset: 0;
+  background: var(--md-sys-color-on-surface-variant);
+  border-radius: inherit;
+  opacity: 0;
+  transition: opacity var(--md-dur-short4) var(--md-motion-standard);
+}
+.md-icon-btn:hover::before { opacity: 0.08; }
+.md-icon-btn:active::before { opacity: 0.12; }
+.md-icon-btn.active { color: var(--md-sys-color-primary); }
 
-    /* ─── Project Row (List view) ─── */
-    .project-row {
-      background: var(--md-surface-1);
-      border-radius: var(--radius-lg);
-      border: 1px solid var(--md-outline-variant);
-      padding: 12px 16px;
-      display: flex;
-      align-items: center;
-      gap: 16px;
-      transition: background var(--transition), box-shadow var(--transition);
-      cursor: pointer;
-    }
-    .project-row:hover { background: var(--md-surface-2); box-shadow: var(--md-elevation-1); }
-    .row-thumb {
-      width: 56px; height: 56px;
-      border-radius: var(--radius-md);
-      object-fit: cover;
-      flex-shrink: 0;
-      background: var(--md-surface-2);
-    }
-    .row-thumb-placeholder {
-      width: 56px; height: 56px;
-      border-radius: var(--radius-md);
-      background: linear-gradient(135deg, var(--md-primary-container), var(--md-secondary-container));
-      display: flex; align-items: center; justify-content: center;
-      flex-shrink: 0;
-    }
-    .row-thumb-placeholder .material-symbols-rounded { font-size: 24px; color: var(--md-on-primary-container); }
-    .row-info { flex: 1; min-width: 0; }
-    .row-name {
-      font-size: 15px; font-weight: 600;
-      color: var(--md-on-surface);
-      white-space: nowrap; overflow: hidden; text-overflow: ellipsis;
-    }
-    .row-category {
-      font-size: 12px; font-weight: 500;
-      color: var(--md-on-surface-variant);
-      margin-top: 3px;
-    }
-    .row-actions { display: flex; gap: 4px; flex-shrink: 0; }
-    .row-icon-btn {
-      width: 40px; height: 40px;
-      border-radius: var(--radius-full);
-      display: flex; align-items: center; justify-content: center;
-      color: var(--md-on-surface-variant);
-      transition: background var(--transition);
-    }
-    .row-icon-btn:hover { background: color-mix(in srgb, var(--md-on-surface) 8%, transparent); }
-    .row-icon-btn .material-symbols-rounded { font-size: 20px; }
+/* Language chip button */
+.lang-chip {
+  height: 32px; padding: 0 14px;
+  border-radius: var(--md-shape-full);
+  border: 1px solid var(--md-sys-color-outline);
+  font-size: 12px; font-weight: 700; letter-spacing: 0.5px;
+  color: var(--md-sys-color-on-surface-variant);
+  display: flex; align-items: center; gap: 6px;
+  transition: all var(--md-dur-short4) var(--md-motion-standard);
+  position: relative; overflow: hidden;
+}
+.lang-chip::before {
+  content: ''; position: absolute; inset: 0;
+  background: var(--md-sys-color-on-surface);
+  opacity: 0; transition: opacity var(--md-dur-short4);
+}
+.lang-chip:hover::before { opacity: 0.06; }
 
-    /* ─── Skeleton Loading ─── */
-    @keyframes skeleton-shimmer {
-      0% { background-position: -200% 0; }
-      100% { background-position: 200% 0; }
-    }
-    .skeleton {
-      background: linear-gradient(90deg,
-        var(--md-surface-variant) 25%,
-        color-mix(in srgb, var(--md-surface) 40%, var(--md-surface-variant)) 50%,
-        var(--md-surface-variant) 75%
-      );
-      background-size: 200% 100%;
-      animation: skeleton-shimmer 1.5s infinite;
-      border-radius: var(--radius-sm);
-    }
-    .skeleton-card {
-      background: var(--md-surface-1);
-      border-radius: var(--radius-xl);
-      border: 1px solid var(--md-outline-variant);
-      overflow: hidden;
-    }
-    .skeleton-image { aspect-ratio: 16/9; }
-    .skeleton-body { padding: 16px; display: flex; flex-direction: column; gap: 10px; }
-    .skeleton-tag { height: 22px; width: 80px; border-radius: var(--radius-full); }
-    .skeleton-title { height: 20px; width: 75%; }
-    .skeleton-title-sm { height: 16px; width: 50%; }
-    .skeleton-actions { display: flex; gap: 8px; margin-top: 8px; }
-    .skeleton-btn { flex: 1; height: 36px; border-radius: var(--radius-md); }
+/* ══════════════════════════════════════════════
+   SEARCH BAR — MD3 Search view
+══════════════════════════════════════════════ */
+.search-section { padding: 16px 16px 8px; }
+.search-bar {
+  display: flex; align-items: center; gap: 4px;
+  background: var(--md-sys-color-surface-container-high);
+  border-radius: var(--md-shape-full);
+  height: 56px; padding: 0 8px 0 16px;
+  transition: background var(--md-dur-short4) var(--md-motion-standard),
+              box-shadow var(--md-dur-short4) var(--md-motion-standard);
+}
+.search-bar:focus-within {
+  background: var(--md-sys-color-surface-container-highest);
+  box-shadow: var(--md-elevation-1);
+}
+.search-icon { color: var(--md-sys-color-on-surface-variant); flex-shrink: 0; }
+.search-input {
+  flex: 1; border: none; background: transparent;
+  font-family: var(--font); font-size: 16px; font-weight: 400;
+  color: var(--md-sys-color-on-surface); outline: none;
+  min-width: 0;
+}
+.search-input::placeholder { color: var(--md-sys-color-on-surface-variant); }
+.search-clear {
+  width: 40px; height: 40px; border-radius: var(--md-shape-full);
+  display: flex; align-items: center; justify-content: center;
+  color: var(--md-sys-color-on-surface-variant);
+  opacity: 0; pointer-events: none;
+  transition: opacity var(--md-dur-short4);
+  position: relative; overflow: hidden;
+}
+.search-clear::before {
+  content: ''; position: absolute; inset: 0; border-radius: inherit;
+  background: currentColor; opacity: 0;
+  transition: opacity var(--md-dur-short4);
+}
+.search-clear:hover::before { opacity: 0.08; }
+.search-clear.visible { opacity: 1; pointer-events: auto; }
 
-    /* ─── Empty State ─── */
-    .empty-state {
-      display: flex; flex-direction: column; align-items: center; justify-content: center;
-      padding: 64px 32px;
-      gap: 16px;
-      text-align: center;
-    }
-    .empty-icon {
-      width: 72px; height: 72px;
-      border-radius: var(--radius-xl);
-      background: var(--md-primary-container);
-      display: flex; align-items: center; justify-content: center;
-    }
-    .empty-icon .material-symbols-rounded { font-size: 36px; color: var(--md-on-primary-container); }
-    .empty-title { font-size: 18px; font-weight: 600; color: var(--md-on-surface); }
-    .empty-subtitle { font-size: 14px; color: var(--md-on-surface-variant); line-height: 1.5; }
-    .empty-reset {
-      padding: 10px 24px;
-      border-radius: var(--radius-full);
-      background: var(--md-primary);
-      color: var(--md-on-primary);
-      font-size: 14px; font-weight: 600; font-family: var(--font);
-      cursor: pointer;
-      transition: opacity var(--transition);
-    }
-    .empty-reset:hover { opacity: 0.9; }
+/* ══════════════════════════════════════════════
+   FILTER CHIPS — MD3 Filter chip
+══════════════════════════════════════════════ */
+.filter-row {
+  padding: 4px 16px 8px;
+  display: flex; gap: 8px;
+  overflow-x: auto; scrollbar-width: none;
+  -webkit-overflow-scrolling: touch;
+}
+.filter-row::-webkit-scrollbar { display: none; }
+.filter-chip {
+  display: inline-flex; align-items: center; gap: 8px;
+  height: 36px; padding: 0 16px;
+  border-radius: var(--md-shape-sm);
+  font-size: 14px; font-weight: 500; font-family: var(--font);
+  white-space: nowrap; cursor: pointer;
+  border: 1px solid var(--md-sys-color-outline);
+  background: transparent;
+  color: var(--md-sys-color-on-surface-variant);
+  position: relative; overflow: hidden;
+  transition: background var(--md-dur-short4) var(--md-motion-standard),
+              border-color var(--md-dur-short4) var(--md-motion-standard),
+              color var(--md-dur-short4) var(--md-motion-standard);
+}
+.filter-chip::before {
+  content: ''; position: absolute; inset: 0;
+  background: var(--md-sys-color-on-surface-variant);
+  opacity: 0; transition: opacity var(--md-dur-short4);
+}
+.filter-chip:hover::before { opacity: 0.08; }
+.filter-chip:active::before { opacity: 0.12; }
+.filter-chip .chip-icon { width: 18px; height: 18px; display: flex; flex-shrink: 0; }
+.filter-chip .chip-icon svg { width: 18px; height: 18px; fill: currentColor; }
+.filter-chip .chip-check { display: none; }
 
-    /* ─── Sort Menu ─── */
-    .menu-backdrop {
-      position: fixed; inset: 0; z-index: 200;
-      background: var(--md-scrim);
-      opacity: 0; pointer-events: none;
-      transition: opacity var(--transition);
-    }
-    .menu-backdrop.visible { opacity: 1; pointer-events: auto; }
-    .sort-menu {
-      position: fixed; right: 16px;
-      background: var(--md-surface-1);
-      border-radius: var(--radius-xl);
-      box-shadow: var(--md-elevation-3);
-      z-index: 201;
-      width: 220px;
-      overflow: hidden;
-      transform: scale(0.95) translateY(-8px);
-      transform-origin: top right;
-      opacity: 0; pointer-events: none;
-      transition: transform var(--transition), opacity var(--transition);
-    }
-    .sort-menu.visible { transform: scale(1) translateY(0); opacity: 1; pointer-events: auto; }
-    .sort-menu-header {
-      padding: 12px 16px 8px;
-      font-size: 12px; font-weight: 600;
-      text-transform: uppercase; letter-spacing: 0.8px;
-      color: var(--md-on-surface-variant);
-    }
-    .sort-option {
-      display: flex; align-items: center; gap: 12px;
-      padding: 12px 16px;
-      cursor: pointer;
-      font-size: 14px; font-weight: 500;
-      color: var(--md-on-surface);
-      transition: background var(--transition);
-    }
-    .sort-option:hover { background: color-mix(in srgb, var(--md-on-surface) 6%, transparent); }
-    .sort-option.active { color: var(--md-primary); }
-    .sort-option .material-symbols-rounded { font-size: 20px; }
-    .sort-check { margin-left: auto; font-size: 20px !important; opacity: 0; }
-    .sort-option.active .sort-check { opacity: 1; }
+.filter-chip.selected {
+  background: var(--md-sys-color-secondary-container);
+  border-color: transparent;
+  color: var(--md-sys-color-on-secondary-container);
+}
+.filter-chip.selected::before {
+  background: var(--md-sys-color-on-secondary-container);
+}
+.filter-chip.selected .chip-check { display: flex; }
+.filter-chip.selected .chip-icon-base { display: none; }
 
-    /* ─── Theme Menu ─── */
-    .theme-menu {
-      position: fixed; right: 16px;
-      background: var(--md-surface-1);
-      border-radius: var(--radius-xl);
-      box-shadow: var(--md-elevation-3);
-      z-index: 201;
-      width: 200px;
-      overflow: hidden;
-      transform: scale(0.95) translateY(-8px);
-      transform-origin: top right;
-      opacity: 0; pointer-events: none;
-      transition: transform var(--transition), opacity var(--transition);
-    }
-    .theme-menu.visible { transform: scale(1) translateY(0); opacity: 1; pointer-events: auto; }
+/* ══════════════════════════════════════════════
+   TOOLBAR
+══════════════════════════════════════════════ */
+.toolbar {
+  padding: 4px 16px 12px;
+  display: flex; align-items: center; gap: 8px;
+}
+.result-count {
+  flex: 1; font-size: 14px; font-weight: 500;
+  color: var(--md-sys-color-on-surface-variant);
+}
+/* MD3 Tonal button */
+.tonal-btn {
+  display: inline-flex; align-items: center; gap: 8px;
+  height: 40px; padding: 0 16px 0 12px;
+  border-radius: var(--md-shape-full);
+  font-size: 14px; font-weight: 600; font-family: var(--font);
+  background: var(--md-sys-color-secondary-container);
+  color: var(--md-sys-color-on-secondary-container);
+  cursor: pointer;
+  position: relative; overflow: hidden;
+  transition: box-shadow var(--md-dur-short4) var(--md-motion-standard);
+  border: none;
+}
+.tonal-btn::before {
+  content: ''; position: absolute; inset: 0;
+  background: var(--md-sys-color-on-secondary-container);
+  opacity: 0; transition: opacity var(--md-dur-short4);
+}
+.tonal-btn:hover { box-shadow: var(--md-elevation-1); }
+.tonal-btn:hover::before { opacity: 0.08; }
+.tonal-btn:active::before { opacity: 0.12; }
+.tonal-btn .btn-icon { width: 18px; height: 18px; display: flex; }
+.tonal-btn .btn-icon svg { width: 18px; height: 18px; fill: currentColor; }
 
-    /* ─── Language Toggle ─── */
-    .lang-badge {
-      display: flex; align-items: center; gap: 4px;
-      padding: 6px 12px; height: 36px;
-      border-radius: var(--radius-full);
-      font-size: 13px; font-weight: 700;
-      font-family: var(--font);
-      color: var(--md-on-surface-variant);
-      background: var(--md-surface-variant);
-      border: 1px solid var(--md-outline-variant);
-      cursor: pointer;
-      transition: all var(--transition);
-    }
-    .lang-badge:hover { background: color-mix(in srgb, var(--md-primary) 8%, var(--md-surface-variant)); }
+/* ══════════════════════════════════════════════
+   PROJECT CARDS — MD3 Filled card
+══════════════════════════════════════════════ */
+.projects-container { padding: 0 16px 100px; }
 
-    /* ─── Bottom Nav (Mobile) ─── */
-    .bottom-nav {
-      display: none;
-      position: fixed; bottom: 0; left: 0; right: 0;
-      height: var(--bottom-nav-height);
-      background: var(--md-surface-1);
-      border-top: 1px solid var(--md-outline-variant);
-      z-index: 100;
-      padding: 0 8px;
-      align-items: center;
-      justify-content: space-around;
-    }
-    .bottom-nav-item {
-      display: flex; flex-direction: column; align-items: center; gap: 4px;
-      cursor: pointer;
-      padding: 8px 20px;
-      border-radius: var(--radius-lg);
-      transition: background var(--transition);
-      flex: 1;
-      position: relative;
-    }
-    .bottom-nav-item:hover { background: color-mix(in srgb, var(--md-on-surface) 6%, transparent); }
-    .bottom-nav-indicator {
-      position: absolute; top: 6px;
-      width: 64px; height: 32px;
-      border-radius: var(--radius-full);
-      background: var(--md-secondary-container);
-      opacity: 0;
-      transition: opacity var(--transition);
-    }
-    .bottom-nav-item.active .bottom-nav-indicator { opacity: 1; }
-    .bottom-nav-item .material-symbols-rounded {
-      font-size: 24px;
-      color: var(--md-on-surface-variant);
-      z-index: 1;
-    }
-    .bottom-nav-item.active .material-symbols-rounded { color: var(--md-on-surface); }
-    .bottom-nav-label {
-      font-size: 12px; font-weight: 600;
-      color: var(--md-on-surface-variant);
-      z-index: 1;
-    }
-    .bottom-nav-item.active .bottom-nav-label { color: var(--md-on-surface); }
+.grid-layout {
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(300px, 1fr));
+  gap: 12px;
+}
+.list-layout { display: flex; flex-direction: column; gap: 4px; }
 
-    /* ─── Loading Spinner ─── */
-    .loader-container {
-      display: flex; flex-direction: column; align-items: center;
-      padding: 48px;
-      gap: 16px;
-    }
-    .loader-ring {
-      width: 48px; height: 48px;
-      border: 4px solid var(--md-outline-variant);
-      border-top-color: var(--md-primary);
-      border-radius: 50%;
-      animation: spin 0.8s linear infinite;
-    }
-    @keyframes spin { to { transform: rotate(360deg); } }
+/* Grid Card */
+.project-card {
+  background: var(--md-sys-color-surface-container-low);
+  border-radius: var(--md-shape-xl);
+  overflow: hidden;
+  display: flex; flex-direction: column;
+  position: relative;
+  transition: box-shadow var(--md-dur-medium2) var(--md-motion-standard),
+              background var(--md-dur-medium2) var(--md-motion-standard);
+  cursor: default;
+}
+.project-card::before {
+  content: ''; position: absolute; inset: 0;
+  background: var(--md-sys-color-on-surface);
+  opacity: 0; border-radius: inherit; pointer-events: none;
+  transition: opacity var(--md-dur-short4);
+}
+.project-card:hover { box-shadow: var(--md-elevation-2); }
+.project-card:hover::before { opacity: 0.05; }
 
-    /* ─── Error State ─── */
-    .error-state {
-      display: flex; flex-direction: column; align-items: center;
-      padding: 48px 32px; gap: 12px; text-align: center;
-    }
-    .error-icon { font-size: 48px; color: var(--md-error); }
-    .error-title { font-size: 18px; font-weight: 600; }
-    .error-msg { font-size: 14px; color: var(--md-on-surface-variant); }
+.card-media {
+  width: 100%; aspect-ratio: 16/9;
+  background: var(--md-sys-color-surface-container);
+  overflow: hidden; position: relative;
+}
+.card-media img {
+  width: 100%; height: 100%; object-fit: cover;
+  transition: transform var(--md-dur-medium4) var(--md-motion-decelerate),
+              opacity var(--md-dur-medium2) var(--md-motion-standard);
+}
+.project-card:hover .card-media img { transform: scale(1.03); }
+.card-media-placeholder {
+  width: 100%; aspect-ratio: 16/9;
+  background: linear-gradient(135deg,
+    var(--md-sys-color-primary-container) 0%,
+    var(--md-sys-color-secondary-container) 100%);
+  display: flex; align-items: center; justify-content: center;
+}
+.card-media-placeholder .icon-lg { color: var(--md-sys-color-on-primary-container); opacity: 0.5; }
 
-    /* ─── Footer ─── */
-    .app-footer {
-      text-align: center;
-      padding: 16px;
-      font-size: 12px;
-      color: var(--md-on-surface-variant);
-      border-top: 1px solid var(--md-outline-variant);
-      margin-top: 8px;
-    }
-    .app-footer a { color: var(--md-primary); font-weight: 600; }
+.card-body { padding: 16px 16px 12px; flex: 1; display: flex; flex-direction: column; gap: 6px; }
 
-    /* ─── Ripple ─── */
-    .ripple-container { position: relative; overflow: hidden; }
-    .ripple {
-      position: absolute;
-      border-radius: 50%;
-      background: currentColor;
-      opacity: 0.12;
-      transform: scale(0);
-      animation: ripple-anim 0.5s ease-out forwards;
-      pointer-events: none;
-    }
-    @keyframes ripple-anim {
-      to { transform: scale(4); opacity: 0; }
-    }
+/* MD3 Assist chip as category badge */
+.category-chip {
+  display: inline-flex; align-items: center; gap: 6px;
+  height: 32px; padding: 0 12px;
+  border-radius: var(--md-shape-sm);
+  border: 1px solid var(--md-sys-color-outline-variant);
+  background: var(--md-sys-color-surface-container-lowest);
+  font-size: 12px; font-weight: 600;
+  color: var(--md-sys-color-on-surface-variant);
+  letter-spacing: 0.2px;
+  width: fit-content;
+}
+.category-chip .icon svg { width: 14px; height: 14px; }
 
-    /* ─── Responsive ─── */
-    @media (max-width: 600px) {
-      :root { --nav-height: 56px; }
-      .projects-grid { grid-template-columns: 1fr; gap: 12px; }
-      .projects-container { padding: 0 12px 100px; }
-      .search-section { padding: 10px 12px 6px; }
-      .filter-section { padding: 4px 12px 10px; }
-      .toolbar { padding: 0 12px 10px; }
-      .app-title h1 { font-size: 18px; }
-      .bottom-nav { display: flex; }
-      .top-app-bar .sort-btn,
-      .top-app-bar .view-btn,
-      .top-app-bar .lang-badge { display: none; }
-    }
-    @media (min-width: 601px) and (max-width: 900px) {
-      .projects-grid { grid-template-columns: repeat(2, 1fr); }
-    }
-    @media (min-width: 1200px) {
-      .projects-grid { grid-template-columns: repeat(auto-fill, minmax(280px, 1fr)); }
-      .projects-container { max-width: 1400px; margin: 0 auto; padding: 0 24px 48px; }
-      .search-section, .filter-section, .toolbar {
-        max-width: 1400px; margin: 0 auto;
-        padding-left: 24px; padding-right: 24px;
-      }
-    }
-    @media (prefers-reduced-motion: reduce) {
-      *, *::before, *::after { animation-duration: 0.01ms !important; transition-duration: 0.01ms !important; }
-    }
-  </style>
+.card-title {
+  font-size: 16px; font-weight: 600; line-height: 1.35;
+  color: var(--md-sys-color-on-surface);
+  margin-top: 2px;
+}
+.card-actions {
+  display: flex; gap: 8px; margin-top: auto; padding-top: 12px;
+}
+
+/* MD3 Filled button */
+.btn-filled {
+  flex: 1; display: flex; align-items: center; justify-content: center; gap: 8px;
+  height: 40px; border-radius: var(--md-shape-full);
+  font-size: 14px; font-weight: 600; font-family: var(--font);
+  background: var(--md-sys-color-primary);
+  color: var(--md-sys-color-on-primary);
+  text-decoration: none;
+  position: relative; overflow: hidden;
+  transition: box-shadow var(--md-dur-short4) var(--md-motion-standard);
+}
+.btn-filled::before {
+  content: ''; position: absolute; inset: 0;
+  background: var(--md-sys-color-on-primary);
+  opacity: 0; transition: opacity var(--md-dur-short4);
+}
+.btn-filled:hover { box-shadow: var(--md-elevation-1); }
+.btn-filled:hover::before { opacity: 0.08; }
+.btn-filled:active::before { opacity: 0.12; }
+.btn-filled .icon svg { width: 18px; height: 18px; fill: currentColor; }
+
+/* MD3 Outlined button */
+.btn-outlined {
+  flex: 1; display: flex; align-items: center; justify-content: center; gap: 8px;
+  height: 40px; border-radius: var(--md-shape-full);
+  font-size: 14px; font-weight: 600; font-family: var(--font);
+  border: 1px solid var(--md-sys-color-outline);
+  color: var(--md-sys-color-primary);
+  text-decoration: none;
+  position: relative; overflow: hidden;
+  transition: background var(--md-dur-short4);
+}
+.btn-outlined::before {
+  content: ''; position: absolute; inset: 0;
+  background: var(--md-sys-color-primary);
+  opacity: 0; transition: opacity var(--md-dur-short4);
+}
+.btn-outlined:hover::before { opacity: 0.08; }
+.btn-outlined:active::before { opacity: 0.12; }
+.btn-outlined .icon svg { width: 18px; height: 18px; fill: currentColor; }
+
+/* ══════════════════════════════════════════════
+   LIST ROW — MD3 List item with 3-line support
+══════════════════════════════════════════════ */
+.project-row {
+  background: var(--md-sys-color-surface);
+  border-radius: var(--md-shape-md);
+  padding: 12px 8px 12px 16px;
+  display: flex; align-items: center; gap: 16px;
+  position: relative; overflow: hidden;
+  transition: background var(--md-dur-short4) var(--md-motion-standard);
+  cursor: default;
+}
+.project-row::before {
+  content: ''; position: absolute; inset: 0;
+  background: var(--md-sys-color-on-surface);
+  opacity: 0; transition: opacity var(--md-dur-short4);
+}
+.project-row:hover::before { opacity: 0.06; }
+
+.row-leading {
+  width: 60px; height: 60px; border-radius: var(--md-shape-md);
+  overflow: hidden; flex-shrink: 0;
+  background: var(--md-sys-color-surface-container);
+}
+.row-leading img { width: 100%; height: 100%; object-fit: cover; }
+.row-leading-placeholder {
+  width: 60px; height: 60px; border-radius: var(--md-shape-md);
+  background: linear-gradient(135deg,
+    var(--md-sys-color-primary-container),
+    var(--md-sys-color-secondary-container));
+  display: flex; align-items: center; justify-content: center;
+  flex-shrink: 0;
+}
+.row-leading-placeholder .icon { color: var(--md-sys-color-on-primary-container); opacity: 0.6; }
+
+.row-content { flex: 1; min-width: 0; }
+.row-headline {
+  font-size: 16px; font-weight: 600;
+  color: var(--md-sys-color-on-surface);
+  white-space: nowrap; overflow: hidden; text-overflow: ellipsis;
+}
+.row-supporting {
+  font-size: 14px; color: var(--md-sys-color-on-surface-variant);
+  margin-top: 2px; font-weight: 500;
+}
+.row-trailing { display: flex; gap: 4px; flex-shrink: 0; z-index: 1; }
+
+/* ══════════════════════════════════════════════
+   SKELETON LOADING
+══════════════════════════════════════════════ */
+@keyframes skel {
+  0%   { background-position: -400px 0; }
+  100% { background-position: 400px 0; }
+}
+.skel {
+  background: linear-gradient(90deg,
+    var(--md-sys-color-surface-container) 25%,
+    var(--md-sys-color-surface-container-high) 50%,
+    var(--md-sys-color-surface-container) 75%);
+  background-size: 800px 100%;
+  animation: skel 1.8s infinite linear;
+  border-radius: var(--md-shape-sm);
+}
+.skel-card {
+  background: var(--md-sys-color-surface-container-low);
+  border-radius: var(--md-shape-xl); overflow: hidden;
+}
+.skel-media { aspect-ratio: 16/9; }
+.skel-body { padding: 16px; display: flex; flex-direction: column; gap: 10px; }
+.skel-chip { height: 32px; width: 90px; border-radius: var(--md-shape-sm); }
+.skel-h2 { height: 20px; width: 70%; border-radius: var(--md-shape-xs); }
+.skel-h3 { height: 16px; width: 45%; border-radius: var(--md-shape-xs); }
+.skel-row { display: flex; gap: 8px; margin-top: 8px; }
+.skel-btn { flex: 1; height: 40px; border-radius: var(--md-shape-full); }
+
+/* ══════════════════════════════════════════════
+   EMPTY & ERROR STATES
+══════════════════════════════════════════════ */
+.empty-state, .error-state {
+  display: flex; flex-direction: column; align-items: center;
+  padding: 80px 32px; gap: 16px; text-align: center;
+}
+.state-icon-wrap {
+  width: 80px; height: 80px; border-radius: var(--md-shape-xl);
+  display: flex; align-items: center; justify-content: center;
+}
+.empty-icon-wrap { background: var(--md-sys-color-secondary-container); }
+.empty-icon-wrap .icon { color: var(--md-sys-color-on-secondary-container); }
+.error-icon-wrap { background: var(--md-sys-color-error-container); }
+.error-icon-wrap .icon { color: var(--md-sys-color-on-error-container); }
+.state-title { font-size: 22px; font-weight: 600; color: var(--md-sys-color-on-surface); }
+.state-body { font-size: 15px; color: var(--md-sys-color-on-surface-variant); line-height: 1.6; max-width: 280px; }
+.btn-tonal-reset {
+  height: 40px; padding: 0 24px;
+  border-radius: var(--md-shape-full);
+  background: var(--md-sys-color-secondary-container);
+  color: var(--md-sys-color-on-secondary-container);
+  font-size: 14px; font-weight: 600; font-family: var(--font);
+  margin-top: 8px; cursor: pointer;
+  position: relative; overflow: hidden;
+}
+.btn-tonal-reset::before {
+  content: ''; position: absolute; inset: 0;
+  background: currentColor; opacity: 0; transition: opacity 200ms;
+}
+.btn-tonal-reset:hover::before { opacity: 0.08; }
+
+/* ══════════════════════════════════════════════
+   MENUS — MD3 Menu
+══════════════════════════════════════════════ */
+.scrim {
+  position: fixed; inset: 0; z-index: 300;
+  background: var(--md-sys-color-scrim);
+  opacity: 0; pointer-events: none;
+  transition: opacity var(--md-dur-medium2) var(--md-motion-standard);
+}
+.scrim.open { opacity: 1; pointer-events: auto; }
+.md-menu {
+  position: fixed; z-index: 301;
+  background: var(--md-sys-color-surface-container);
+  border-radius: var(--md-shape-xl);
+  box-shadow: var(--md-elevation-3);
+  min-width: 200px;
+  overflow: hidden;
+  transform-origin: top right;
+  transform: scale(0.9) translateY(-12px);
+  opacity: 0; pointer-events: none;
+  transition: transform var(--md-dur-medium2) var(--md-motion-decelerate),
+              opacity var(--md-dur-short4) var(--md-motion-standard);
+}
+.md-menu.open {
+  transform: scale(1) translateY(0);
+  opacity: 1; pointer-events: auto;
+}
+.menu-header {
+  padding: 12px 16px 4px;
+  font-size: 12px; font-weight: 700; letter-spacing: 0.8px; text-transform: uppercase;
+  color: var(--md-sys-color-on-surface-variant);
+}
+.menu-item {
+  display: flex; align-items: center; gap: 12px;
+  padding: 12px 16px;
+  font-size: 14px; font-weight: 500; font-family: var(--font);
+  color: var(--md-sys-color-on-surface);
+  cursor: pointer; position: relative; overflow: hidden;
+  transition: background var(--md-dur-short4);
+}
+.menu-item::before {
+  content: ''; position: absolute; inset: 0;
+  background: var(--md-sys-color-on-surface);
+  opacity: 0; transition: opacity var(--md-dur-short4);
+}
+.menu-item:hover::before { opacity: 0.08; }
+.menu-item.active { color: var(--md-sys-color-primary); }
+.menu-item .icon svg { width: 20px; height: 20px; fill: currentColor; }
+.menu-item-check { margin-left: auto; }
+.menu-divider { height: 1px; background: var(--md-sys-color-outline-variant); margin: 4px 0; }
+
+/* ══════════════════════════════════════════════
+   BOTTOM NAV BAR — MD3
+══════════════════════════════════════════════ */
+.bottom-nav {
+  display: none;
+  position: fixed; bottom: 0; left: 0; right: 0;
+  height: var(--bottom-nav-height);
+  background: var(--md-sys-color-surface-container);
+  z-index: 200;
+  padding-bottom: env(safe-area-inset-bottom, 0);
+  border-top: 1px solid var(--md-sys-color-outline-variant);
+}
+.bottom-nav-inner {
+  height: 80px; display: flex; align-items: center;
+}
+.bottom-nav-item {
+  flex: 1; display: flex; flex-direction: column; align-items: center;
+  justify-content: center; gap: 4px;
+  height: 100%; cursor: pointer;
+  position: relative;
+}
+.nav-indicator {
+  width: 64px; height: 32px; border-radius: var(--md-shape-full);
+  background: var(--md-sys-color-secondary-container);
+  display: flex; align-items: center; justify-content: center;
+  position: relative; overflow: hidden;
+  transition: width var(--md-dur-medium2) var(--md-motion-standard),
+              background var(--md-dur-short4);
+}
+.nav-indicator::before {
+  content: ''; position: absolute; inset: 0;
+  background: var(--md-sys-color-on-secondary-container);
+  opacity: 0; transition: opacity var(--md-dur-short4);
+}
+.bottom-nav-item:hover .nav-indicator::before { opacity: 0.08; }
+.bottom-nav-item:not(.active) .nav-indicator {
+  background: transparent;
+}
+.nav-icon { display: flex; color: var(--md-sys-color-on-surface-variant); }
+.nav-icon svg { width: 24px; height: 24px; fill: currentColor; }
+.bottom-nav-item.active .nav-icon { color: var(--md-sys-color-on-secondary-container); }
+.nav-label {
+  font-size: 12px; font-weight: 600;
+  color: var(--md-sys-color-on-surface-variant);
+}
+.bottom-nav-item.active .nav-label { color: var(--md-sys-color-on-surface); }
+
+/* ══════════════════════════════════════════════
+   FOOTER
+══════════════════════════════════════════════ */
+.app-footer {
+  text-align: center; padding: 20px 16px;
+  font-size: 13px; color: var(--md-sys-color-on-surface-variant);
+  border-top: 1px solid var(--md-sys-color-outline-variant);
+}
+.app-footer a { color: var(--md-sys-color-primary); font-weight: 600; }
+
+/* ══════════════════════════════════════════════
+   RIPPLE
+══════════════════════════════════════════════ */
+.ripple-surface { position: relative; overflow: hidden; }
+.ripple {
+  position: absolute; border-radius: 50%;
+  background: currentColor; opacity: 0.12;
+  transform: scale(0);
+  animation: ripple 500ms var(--md-motion-standard) forwards;
+  pointer-events: none;
+}
+@keyframes ripple { to { transform: scale(4); opacity: 0; } }
+
+/* ══════════════════════════════════════════════
+   RESPONSIVE LAYOUT
+══════════════════════════════════════════════ */
+@media (max-width: 599px) {
+  :root { --nav-height: 64px; }
+  .grid-layout { grid-template-columns: 1fr; }
+  .projects-container { padding: 0 16px 96px; }
+  .bottom-nav { display: block; }
+  #topSortBtn, #topThemeBtn, #langChip { display: none; }
+}
+@media (min-width: 600px) and (max-width: 839px) {
+  .grid-layout { grid-template-columns: repeat(2, 1fr); }
+}
+@media (min-width: 840px) and (max-width: 1199px) {
+  .grid-layout { grid-template-columns: repeat(3, 1fr); }
+}
+@media (min-width: 1200px) {
+  .projects-container,
+  .search-section, .filter-row, .toolbar {
+    max-width: 1400px; margin-left: auto; margin-right: auto;
+    padding-left: 24px; padding-right: 24px;
+  }
+  .projects-container { padding-bottom: 48px; }
+  .grid-layout { grid-template-columns: repeat(auto-fill, minmax(280px, 1fr)); }
+  .bar-headline { padding-left: 12px; }
+}
+@media (prefers-reduced-motion: reduce) {
+  *, *::before, *::after {
+    animation-duration: 0.01ms !important;
+    transition-duration: 0.01ms !important;
+  }
+}
+</style>
 </head>
 <body>
 
-  <!-- Top App Bar -->
-  <header class="top-app-bar" id="topBar">
-    <div class="app-title">
-      <img src="icons/icon-48.png" alt="logo" />
-      <h1 id="appTitle">Project List</h1>
+<!-- ── TOP APP BAR ── -->
+<header class="top-app-bar" id="topBar">
+  <div class="bar-leading">
+    <div class="md-icon-btn" style="pointer-events:none">
+      <span class="icon"><img src="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAADAAAAAwCAYAAABXAvmHAAABnklEQVR4nO2aXUrDQBDHZyEHsGkq5BBeQUEURME3FVvFVlFv4F0UREEUfFOxVWwV9Qj1EAX7cQTHh7Dpmo+NeUgys+T/VDIDOz/mI6Gzwj3pg0aoM+YoEWewEH+inlMJXErGEwKxAEOxUgteFUIAIghAOXipPxAqAIfgpXwICz0ATsFLIQCIqB5gJQuQNQHyzwDvBES/B1ipBChaZQ8ULfMBvk/nB/L37PGnm3lEKSWcw/dYguHZwiD4rHb04Sr2r6wCU86b09nTl1DeJZdwHnsA4ey/aj2G54t+GdUO3uj1QLXVYz2GEktodLHkZ8Bp9QhmYO8llmB0uRyaQk6z6yr2zKeQ0+waPoXSfgvl/e2UdJ6wd560HuOrFb+MqrvP9HrAbnTMnkLj69VpBhodehmobD/GEkxu1kJTyK63XcWe+RSy623DpxB3AFHZvNd6TG7X/TKytx7o9cDMxp3ZU4i6SoCiVf4vVLRKgKJlIaIAnjsyAFN2ZADeypIbibdmVTLACWK66A68BzhAaK8aSAeqEP+67KE6UgGJvW7zCwPjxeYL9nptAAAAAElFTkSuQmCC" width="28" height="28" style="border-radius:6px" alt="" /></span>
     </div>
-    <div class="top-actions">
-      <button class="lang-badge" id="langToggle" aria-label="Toggle language" title="Toggle language">
-        <span class="material-symbols-rounded" style="font-size:16px">translate</span>
-        <span id="langLabel">EN</span>
-      </button>
-      <button class="icon-btn view-btn" id="viewToggleBtn" title="Toggle view">
-        <span class="material-symbols-rounded" id="viewIcon">grid_view</span>
-      </button>
-      <button class="icon-btn" id="sortBtnTop" title="Sort">
-        <span class="material-symbols-rounded">sort</span>
-      </button>
-      <button class="icon-btn" id="themeBtnTop" title="Theme">
-        <span class="material-symbols-rounded" id="themeIconTop">brightness_6</span>
-      </button>
-    </div>
-  </header>
-
-  <!-- Search -->
-  <section class="search-section">
-    <div class="search-bar">
-      <span class="material-symbols-rounded">search</span>
-      <input type="text" id="searchInput" autocomplete="off" spellcheck="false" />
-      <button class="search-clear" id="searchClear">
-        <span class="material-symbols-rounded">close</span>
-      </button>
-    </div>
-  </section>
-
-  <!-- Category Chips -->
-  <section class="filter-section" id="filterSection" aria-label="Category filters"></section>
-
-  <!-- Toolbar -->
-  <div class="toolbar">
-    <span class="result-count" id="resultCount"></span>
-    <button class="sort-btn" id="sortBtnToolbar">
-      <span class="material-symbols-rounded">sort</span>
-      <span id="sortLabel">Name A–Z</span>
+  </div>
+  <h1 class="bar-headline" id="appTitle">Project List</h1>
+  <div class="bar-trailing">
+    <button class="lang-chip ripple-surface" id="langChip">
+      <span class="icon" style="width:16px;height:16px">
+        <svg viewBox="0 0 24 24"><path d="M12.87 15.07l-2.54-2.51.03-.03c1.74-1.94 2.98-4.17 3.71-6.53H17V4h-7V2H8v2H1v1.99h11.17C11.5 7.92 10.44 9.75 9 11.35 8.07 10.32 7.3 9.19 6.69 8h-2c.73 1.63 1.73 3.17 2.98 4.56l-5.09 5.02L4 19l5-5 3.11 3.11.76-2.04zM18.5 10h-2L12 22h2l1.12-3h4.75L21 22h2l-4.5-12zm-2.62 7l1.62-4.33L19.12 17h-3.24z"/></svg>
+      </span>
+      <span id="langLabel">EN</span>
     </button>
-    <button class="view-btn" id="viewToggleToolbar">
-      <span class="material-symbols-rounded" id="viewIconToolbar">grid_view</span>
+    <button class="md-icon-btn" id="topViewBtn" title="Toggle view">
+      <span class="icon" id="topViewIcon">
+        <svg viewBox="0 0 24 24"><path d="M3 3h7v7H3zm0 11h7v7H3zm11-11h7v7h-7zm0 11h7v7h-7z"/></svg>
+      </span>
+    </button>
+    <button class="md-icon-btn" id="topSortBtn" title="Sort">
+      <span class="icon"><svg viewBox="0 0 24 24"><path d="M3 18h6v-2H3v2zM3 6v2h18V6H3zm0 7h12v-2H3v2z"/></svg></span>
+    </button>
+    <button class="md-icon-btn" id="topThemeBtn" title="Theme">
+      <span class="icon" id="topThemeIcon">
+        <svg viewBox="0 0 24 24"><path d="M12 3a9 9 0 1 0 9 9c0-.46-.04-.92-.1-1.36a5.389 5.389 0 0 1-4.4 2.26 5.403 5.403 0 0 1-3.14-9.8c-.44-.06-.9-.1-1.36-.1z"/></svg>
+      </span>
     </button>
   </div>
+</header>
 
-  <!-- Projects -->
-  <main class="projects-container" id="projectsContainer">
-    <div id="projectsOutput"></div>
-  </main>
-
-  <!-- Footer -->
-  <footer class="app-footer" id="appFooter">
-    <span id="footerText"></span>
-  </footer>
-
-  <!-- Sort Menu -->
-  <div class="menu-backdrop" id="sortBackdrop"></div>
-  <div class="sort-menu" id="sortMenu" role="menu">
-    <div class="sort-menu-header" id="sortMenuHeader">Sort by</div>
+<!-- ── SEARCH ── -->
+<div class="search-section">
+  <div class="search-bar">
+    <span class="icon search-icon">
+      <svg viewBox="0 0 24 24"><path d="M15.5 14h-.79l-.28-.27A6.471 6.471 0 0 0 16 9.5 6.5 6.5 0 1 0 9.5 16c1.61 0 3.09-.59 4.23-1.57l.27.28v.79l5 4.99L20.49 19l-4.99-5zm-6 0C7.01 14 5 11.99 5 9.5S7.01 5 9.5 5 14 7.01 14 9.5 11.99 14 9.5 14z"/></svg>
+    </span>
+    <input class="search-input" id="searchInput" type="search" autocomplete="off" spellcheck="false" />
+    <button class="search-clear" id="searchClear">
+      <span class="icon"><svg viewBox="0 0 24 24"><path d="M19 6.41L17.59 5 12 10.59 6.41 5 5 6.41 10.59 12 5 17.59 6.41 19 12 13.41 17.59 19 19 17.59 13.41 12z"/></svg></span>
+    </button>
   </div>
+</div>
 
-  <!-- Theme Menu -->
-  <div class="theme-menu" id="themeMenu" role="menu">
-    <div class="sort-menu-header" id="themeMenuHeader">Theme</div>
-  </div>
+<!-- ── FILTER CHIPS ── -->
+<div class="filter-row" id="filterRow" aria-label="Category filters"></div>
 
-  <!-- Bottom Navigation (Mobile) -->
-  <nav class="bottom-nav" id="bottomNav" aria-label="Bottom navigation">
-    <div class="bottom-nav-item active" id="bnHome" onclick="app.bottomNavSelect('home')">
-      <div class="bottom-nav-indicator"></div>
-      <span class="material-symbols-rounded icon-fill">home</span>
-      <span class="bottom-nav-label" id="bnHomeLabel">Home</span>
+<!-- ── TOOLBAR ── -->
+<div class="toolbar">
+  <span class="result-count" id="resultCount"></span>
+  <button class="tonal-btn ripple-surface" id="toolbarSortBtn">
+    <span class="btn-icon"><svg viewBox="0 0 24 24"><path d="M3 18h6v-2H3v2zM3 6v2h18V6H3zm0 7h12v-2H3v2z"/></svg></span>
+    <span id="sortLabel">Name A–Z</span>
+  </button>
+  <button class="tonal-btn ripple-surface" id="toolbarViewBtn">
+    <span class="btn-icon" id="toolbarViewIcon"><svg viewBox="0 0 24 24"><path d="M3 3h7v7H3zm0 11h7v7H3zm11-11h7v7h-7zm0 11h7v7h-7z"/></svg></span>
+  </button>
+</div>
+
+<!-- ── PROJECTS ── -->
+<main class="projects-container" id="projectsContainer">
+  <div id="projectsOutput"></div>
+</main>
+
+<!-- ── FOOTER ── -->
+<footer class="app-footer" id="appFooter"></footer>
+
+<!-- ── SCRIM ── -->
+<div class="scrim" id="scrim"></div>
+
+<!-- ── SORT MENU ── -->
+<div class="md-menu" id="sortMenu" role="menu" style="right:16px">
+  <div class="menu-header" id="sortMenuTitle">Sort by</div>
+  <div id="sortMenuItems"></div>
+</div>
+
+<!-- ── THEME MENU ── -->
+<div class="md-menu" id="themeMenu" role="menu" style="right:16px">
+  <div class="menu-header" id="themeMenuTitle">Theme</div>
+  <div id="themeMenuItems"></div>
+</div>
+
+<!-- ── BOTTOM NAV ── -->
+<nav class="bottom-nav" id="bottomNav">
+  <div class="bottom-nav-inner">
+    <div class="bottom-nav-item active" id="bnHome" onclick="app.bnSelect('Home')">
+      <div class="nav-indicator">
+        <span class="nav-icon">
+          <svg viewBox="0 0 24 24"><path d="M10 20v-6h4v6h5v-8h3L12 3 2 12h3v8z"/></svg>
+        </span>
+      </div>
+      <span class="nav-label" id="bnHomeLabel">Home</span>
     </div>
     <div class="bottom-nav-item" id="bnSort" onclick="app.showSortMenu()">
-      <div class="bottom-nav-indicator"></div>
-      <span class="material-symbols-rounded">sort</span>
-      <span class="bottom-nav-label" id="bnSortLabel">Sort</span>
+      <div class="nav-indicator">
+        <span class="nav-icon">
+          <svg viewBox="0 0 24 24"><path d="M3 18h6v-2H3v2zM3 6v2h18V6H3zm0 7h12v-2H3v2z"/></svg>
+        </span>
+      </div>
+      <span class="nav-label" id="bnSortLabel">Sort</span>
     </div>
     <div class="bottom-nav-item" id="bnLang" onclick="app.toggleLang()">
-      <div class="bottom-nav-indicator"></div>
-      <span class="material-symbols-rounded">translate</span>
-      <span class="bottom-nav-label" id="bnLangLabel">Language</span>
+      <div class="nav-indicator">
+        <span class="nav-icon">
+          <svg viewBox="0 0 24 24"><path d="M12.87 15.07l-2.54-2.51.03-.03c1.74-1.94 2.98-4.17 3.71-6.53H17V4h-7V2H8v2H1v1.99h11.17C11.5 7.92 10.44 9.75 9 11.35 8.07 10.32 7.3 9.19 6.69 8h-2c.73 1.63 1.73 3.17 2.98 4.56l-5.09 5.02L4 19l5-5 3.11 3.11.76-2.04zM18.5 10h-2L12 22h2l1.12-3h4.75L21 22h2l-4.5-12zm-2.62 7l1.62-4.33L19.12 17h-3.24z"/></svg>
+        </span>
+      </div>
+      <span class="nav-label" id="bnLangLabel">Language</span>
     </div>
     <div class="bottom-nav-item" id="bnTheme" onclick="app.cycleTheme()">
-      <div class="bottom-nav-indicator"></div>
-      <span class="material-symbols-rounded" id="bnThemeIcon">brightness_6</span>
-      <span class="bottom-nav-label" id="bnThemeLabel">Theme</span>
+      <div class="nav-indicator">
+        <span class="nav-icon" id="bnThemeIconWrap">
+          <svg viewBox="0 0 24 24"><path d="M12 3a9 9 0 1 0 9 9c0-.46-.04-.92-.1-1.36a5.389 5.389 0 0 1-4.4 2.26 5.403 5.403 0 0 1-3.14-9.8c-.44-.06-.9-.1-1.36-.1z"/></svg>
+        </span>
+      </div>
+      <span class="nav-label" id="bnThemeLabel">Theme</span>
     </div>
-  </nav>
+  </div>
+</nav>
 
-  <script>
-  // ─── TRANSLATIONS ───────────────────────────────────────────────
-  const T = {
-    en: {
-      appTitle: 'Project List',
-      search: 'Search projects…',
-      all: 'All',
-      sortBy: 'Sort by',
-      nameAZ: 'Name A–Z',
-      nameZA: 'Name Z–A',
-      categoryAZ: 'Category A–Z',
-      newest: 'Newest',
-      results: (n) => `${n} project${n !== 1 ? 's' : ''}`,
-      noResults: 'No projects found',
-      noResultsSub: 'Try adjusting your search or filters.',
-      resetFilters: 'Reset filters',
-      visitProject: 'Visit',
-      sourceCode: 'Source',
-      theme: 'Theme',
-      themeLight: 'Light',
-      themeDark: 'Dark',
-      themeSystem: 'System',
-      loading: 'Loading projects…',
-      errorTitle: 'Failed to load',
-      errorMsg: 'Could not fetch project data. Check your connection.',
-      gridView: 'Grid view',
-      listView: 'List view',
-      footerBy: 'Made by',
-      footerAI: 'with AI assistance from Claude',
-      home: 'Home',
-      sort: 'Sort',
-      language: 'Language',
-    },
-    vi: {
-      appTitle: 'Danh Sách Dự Án',
-      search: 'Tìm kiếm dự án…',
-      all: 'Tất cả',
-      sortBy: 'Sắp xếp',
-      nameAZ: 'Tên A–Z',
-      nameZA: 'Tên Z–A',
-      categoryAZ: 'Danh mục A–Z',
-      newest: 'Mới nhất',
-      results: (n) => `${n} dự án`,
-      noResults: 'Không tìm thấy dự án',
-      noResultsSub: 'Thử thay đổi từ khóa hoặc bộ lọc.',
-      resetFilters: 'Xóa bộ lọc',
-      visitProject: 'Xem',
-      sourceCode: 'Code',
-      theme: 'Giao diện',
-      themeLight: 'Sáng',
-      themeDark: 'Tối',
-      themeSystem: 'Hệ thống',
-      loading: 'Đang tải dự án…',
-      errorTitle: 'Không thể tải dữ liệu',
-      errorMsg: 'Không thể lấy dữ liệu. Vui lòng kiểm tra kết nối.',
-      gridView: 'Lưới',
-      listView: 'Danh sách',
-      footerBy: 'Tạo bởi',
-      footerAI: 'với sự hỗ trợ của Claude AI',
-      home: 'Trang chủ',
-      sort: 'Sắp xếp',
-      language: 'Ngôn ngữ',
-    }
-  };
+<!-- SVG ICON DEFS (reusable) -->
+<svg style="display:none" xmlns="http://www.w3.org/2000/svg">
+  <defs>
+    <symbol id="ic-code" viewBox="0 0 24 24"><path d="M9.4 16.6L4.8 12l4.6-4.6L8 6l-6 6 6 6 1.4-1.4zm5.2 0l4.6-4.6-4.6-4.6L16 6l6 6-6 6-1.4-1.4z"/></symbol>
+    <symbol id="ic-link" viewBox="0 0 24 24"><path d="M3.9 12c0-1.71 1.39-3.1 3.1-3.1h4V7H7c-2.76 0-5 2.24-5 5s2.24 5 5 5h4v-1.9H7c-1.71 0-3.1-1.39-3.1-3.1zM8 13h8v-2H8v2zm9-6h-4v1.9h4c1.71 0 3.1 1.39 3.1 3.1s-1.39 3.1-3.1 3.1h-4V17h4c2.76 0 5-2.24 5-5s-2.24-5-5-5z"/></symbol>
+    <symbol id="ic-folder" viewBox="0 0 24 24"><path d="M10 4H4c-1.1 0-1.99.9-1.99 2L2 18c0 1.1.9 2 2 2h16c1.1 0 2-.9 2-2V8c0-1.1-.9-2-2-2h-8l-2-2z"/></symbol>
+    <symbol id="ic-apps" viewBox="0 0 24 24"><path d="M4 8h4V4H4v4zm6 12h4v-4h-4v4zm-6 0h4v-4H4v4zm0-6h4v-4H4v4zm6 0h4v-4h-4v4zm6-10v4h4V4h-4zm-6 4h4V4h-4v4zm6 6h4v-4h-4v4zm0 6h4v-4h-4v4z"/></symbol>
+    <symbol id="ic-grid" viewBox="0 0 24 24"><path d="M3 3h7v7H3zm0 11h7v7H3zm11-11h7v7h-7zm0 11h7v7h-7z"/></symbol>
+    <symbol id="ic-list" viewBox="0 0 24 24"><path d="M3 13h2v-2H3v2zm0 4h2v-2H3v2zm0-8h2V7H3v2zm4 4h14v-2H7v2zm0 4h14v-2H7v2zM7 7v2h14V7H7z"/></symbol>
+    <symbol id="ic-search-off" viewBox="0 0 24 24"><path d="M15.5 14h-.79l-.28-.27A6.471 6.471 0 0 0 16 9.5 6.5 6.5 0 1 0 9.5 16c1.61 0 3.09-.59 4.23-1.57l.27.28v.79l5 4.99L20.49 19l-4.99-5zm-6 0C7.01 14 5 11.99 5 9.5S7.01 5 9.5 5 14 7.01 14 9.5 11.99 14 9.5 14zm-1-7H10v3H7v1h3v3h1v-3h3v-1h-3V7z"/></symbol>
+    <symbol id="ic-error" viewBox="0 0 24 24"><path d="M12 2C6.48 2 2 6.48 2 12s4.48 10 10 10 10-4.48 10-10S17.52 2 12 2zm1 15h-2v-2h2v2zm0-4h-2V7h2v6z"/></symbol>
+    <symbol id="ic-light" viewBox="0 0 24 24"><path d="M6.76 4.84l-1.8-1.79-1.41 1.41 1.79 1.79 1.42-1.41zM4 10.5H1v2h3v-2zm9-9.95h-2V3.5h2V.55zm7.45 3.91l-1.41-1.41-1.79 1.79 1.41 1.41 1.79-1.79zm-3.21 13.7l1.79 1.8 1.41-1.41-1.8-1.79-1.4 1.4zM20 10.5v2h3v-2h-3zm-8-5c-3.31 0-6 2.69-6 6s2.69 6 6 6 6-2.69 6-6-2.69-6-6-6zm-1 16.95h2V19.5h-2v2.95zm-7.45-3.91l1.41 1.41 1.79-1.8-1.41-1.41-1.79 1.8z"/></symbol>
+    <symbol id="ic-dark" viewBox="0 0 24 24"><path d="M12 3a9 9 0 1 0 9 9c0-.46-.04-.92-.1-1.36a5.389 5.389 0 0 1-4.4 2.26 5.403 5.403 0 0 1-3.14-9.8c-.44-.06-.9-.1-1.36-.1z"/></symbol>
+    <symbol id="ic-system" viewBox="0 0 24 24"><path d="M12 18c-.89 0-1.74-.2-2.5-.55C11.56 16.5 13 14.42 13 12s-1.44-4.5-3.5-5.45C10.26 6.2 11.11 6 12 6c3.31 0 6 2.69 6 6s-2.69 6-6 6zm0-16C6.48 2 2 6.48 2 12s4.48 10 10 10 10-4.48 10-10S17.52 2 12 2z"/></symbol>
+    <symbol id="ic-check" viewBox="0 0 24 24"><path d="M9 16.17L4.83 12l-1.42 1.41L9 19 21 7l-1.41-1.41z"/></symbol>
+  </defs>
+</svg>
 
-  // ─── APP STATE ──────────────────────────────────────────────────
-  const SHEET_ID = '1eyJ1EReaig8bkaHwHgDoNtvlLO2XSxxE3VrMRP3YHeA';
-  const SHEET_URL = `https://docs.google.com/spreadsheets/d/${SHEET_ID}/gviz/tq?tqx=out:json&sheet=Sheet1`;
-
-  const app = {
-    data: [],
-    filtered: [],
-    lang: localStorage.getItem('pl_lang') || 'en',
-    theme: localStorage.getItem('pl_theme') || 'system',
-    view: localStorage.getItem('pl_view') || 'grid',
-    sort: localStorage.getItem('pl_sort') || 'nameAZ',
-    category: localStorage.getItem('pl_category') || 'all',
-    query: '',
-    menuOpen: null,
-
-    get t() { return T[this.lang]; },
-
-    // ── Init ──
-    async init() {
-      this.applyTheme();
-      this.applyLang();
-      this.applyView();
-      this.renderSkeletons();
-      this.bindEvents();
-
-      try {
-        await this.fetchData();
-        this.buildCategoryChips();
-        this.applyFilters();
-      } catch(e) {
-        this.renderError();
-      }
-    },
-
-    // ── Fetch Data from Google Sheets ──
-    async fetchData() {
-      const res = await fetch(SHEET_URL);
-      const text = await res.text();
-      // GViz returns: google.visualization.Query.setResponse({...});
-      const json = JSON.parse(text.replace(/^[^(]+\(/, '').replace(/\);?\s*$/, ''));
-      const rows = json.table.rows;
-      const cols = json.table.cols.map(c => c.label.toLowerCase().trim());
-
-      this.data = rows.map((row, idx) => {
-        const obj = { _idx: idx };
-        cols.forEach((col, i) => {
-          obj[col] = row.c[i]?.v ?? row.c[i]?.f ?? '';
-        });
-        return obj;
-      }).filter(r => r.name);
-    },
-
-    // ── Build Category Chips ──
-    buildCategoryChips() {
-      const cats = ['all', ...new Set(this.data.map(p => p.category).filter(Boolean).sort())];
-      const section = document.getElementById('filterSection');
-      section.innerHTML = cats.map(cat => `
-        <button class="chip ripple-container ${this.category === cat ? 'active' : ''}"
-          data-cat="${cat}" aria-pressed="${this.category === cat}">
-          ${cat === 'all'
-            ? `<span class="material-symbols-rounded">apps</span>${this.t.all}`
-            : `<span class="material-symbols-rounded">folder_open</span>${cat}`}
-        </button>
-      `).join('');
-      section.querySelectorAll('.chip').forEach(btn => {
-        btn.addEventListener('click', e => {
-          this.category = btn.dataset.cat;
-          localStorage.setItem('pl_category', this.category);
-          section.querySelectorAll('.chip').forEach(b => {
-            b.classList.toggle('active', b.dataset.cat === this.category);
-            b.setAttribute('aria-pressed', b.dataset.cat === this.category);
-          });
-          this.applyFilters();
-        });
-        this.addRipple(btn);
-      });
-    },
-
-    // ── Filter + Sort + Render ──
-    applyFilters() {
-      let list = [...this.data];
-      if (this.category !== 'all') list = list.filter(p => p.category === this.category);
-      if (this.query) {
-        const q = this.query.toLowerCase();
-        list = list.filter(p =>
-          (p.name || '').toLowerCase().includes(q) ||
-          (p.category || '').toLowerCase().includes(q)
-        );
-      }
-      // Sort
-      list = this.sortList(list);
-      this.filtered = list;
-      this.renderProjects();
-    },
-
-    sortList(list) {
-      const s = this.sort;
-      return list.slice().sort((a, b) => {
-        if (s === 'nameAZ') return (a.name||'').localeCompare(b.name||'');
-        if (s === 'nameZA') return (b.name||'').localeCompare(a.name||'');
-        if (s === 'categoryAZ') return (a.category||'').localeCompare(b.category||'');
-        if (s === 'newest') return b._idx - a._idx;
-        return 0;
-      });
-    },
-
-    // ── Render Projects ──
-    renderProjects() {
-      const out = document.getElementById('projectsOutput');
-      const count = document.getElementById('resultCount');
-      count.textContent = this.t.results(this.filtered.length);
-
-      if (!this.filtered.length) {
-        out.innerHTML = this.emptyHTML();
-        return;
-      }
-
-      if (this.view === 'grid') {
-        out.className = 'projects-grid';
-        out.innerHTML = this.filtered.map(p => this.cardHTML(p)).join('');
-      } else {
-        out.className = 'projects-list';
-        out.innerHTML = this.filtered.map(p => this.rowHTML(p)).join('');
-      }
-
-      // Bind card ripples
-      out.querySelectorAll('.ripple-container').forEach(el => this.addRipple(el));
-
-      // Lazy-load images
-      out.querySelectorAll('img[data-src]').forEach(img => {
-        const observer = new IntersectionObserver(entries => {
-          entries.forEach(entry => {
-            if (entry.isIntersecting) {
-              const el = entry.target;
-              el.src = el.dataset.src;
-              el.onload = () => el.style.opacity = 1;
-              el.onerror = () => {
-                // Replace with placeholder
-                const ph = document.createElement('div');
-                ph.className = el.className.replace('card-image','card-image-placeholder').replace('row-thumb','row-thumb-placeholder');
-                ph.innerHTML = `<span class="material-symbols-rounded">code</span>`;
-                el.replaceWith(ph);
-              };
-              observer.disconnect();
-            }
-          });
-        });
-        observer.observe(img);
-      });
-    },
-
-    cardHTML(p) {
-      const imgHTML = p.image
-        ? `<img class="card-image" data-src="${this.escAttr(p.image)}" src="" alt="${this.escAttr(p.name)}" style="opacity:0;transition:opacity 0.3s" loading="lazy" />`
-        : `<div class="card-image-placeholder"><span class="material-symbols-rounded">code</span></div>`;
-
-      const visitBtn = p.url
-        ? `<a class="card-btn card-btn-primary ripple-container" href="${this.escAttr(p.url)}" target="_blank" rel="noopener" onclick="event.stopPropagation()">
-            <span class="material-symbols-rounded">open_in_new</span>${this.t.visitProject}</a>`
-        : '';
-      const srcBtn = p.source_code
-        ? `<a class="card-btn card-btn-secondary ripple-container" href="${this.escAttr(p.source_code)}" target="_blank" rel="noopener" onclick="event.stopPropagation()">
-            <span class="material-symbols-rounded">code</span>${this.t.sourceCode}</a>`
-        : '';
-
-      return `
-        <article class="project-card ripple-container" role="article" aria-label="${this.escAttr(p.name)}">
-          ${imgHTML}
-          <div class="card-body">
-            ${p.category ? `<span class="card-category">${this.esc(p.category)}</span>` : ''}
-            <h2 class="card-name">${this.esc(p.name)}</h2>
-            ${visitBtn || srcBtn ? `<div class="card-actions">${visitBtn}${srcBtn}</div>` : ''}
-          </div>
-        </article>`;
-    },
-
-    rowHTML(p) {
-      const imgHTML = p.image
-        ? `<img class="row-thumb" data-src="${this.escAttr(p.image)}" src="" alt="" style="opacity:0;transition:opacity 0.3s" loading="lazy" />`
-        : `<div class="row-thumb-placeholder"><span class="material-symbols-rounded">code</span></div>`;
-
-      const visitBtn = p.url
-        ? `<a class="row-icon-btn" href="${this.escAttr(p.url)}" target="_blank" rel="noopener" title="${this.t.visitProject}" onclick="event.stopPropagation()">
-            <span class="material-symbols-rounded">open_in_new</span></a>`
-        : '';
-      const srcBtn = p.source_code
-        ? `<a class="row-icon-btn" href="${this.escAttr(p.source_code)}" target="_blank" rel="noopener" title="${this.t.sourceCode}" onclick="event.stopPropagation()">
-            <span class="material-symbols-rounded">code</span></a>`
-        : '';
-
-      return `
-        <div class="project-row ripple-container" role="article" aria-label="${this.escAttr(p.name)}">
-          ${imgHTML}
-          <div class="row-info">
-            <div class="row-name">${this.esc(p.name)}</div>
-            ${p.category ? `<div class="row-category">${this.esc(p.category)}</div>` : ''}
-          </div>
-          <div class="row-actions">${visitBtn}${srcBtn}</div>
-        </div>`;
-    },
-
-    emptyHTML() {
-      return `
-        <div class="empty-state">
-          <div class="empty-icon"><span class="material-symbols-rounded">search_off</span></div>
-          <div class="empty-title">${this.t.noResults}</div>
-          <div class="empty-subtitle">${this.t.noResultsSub}</div>
-          <button class="empty-reset" onclick="app.resetFilters()">${this.t.resetFilters}</button>
-        </div>`;
-    },
-
-    renderSkeletons() {
-      const out = document.getElementById('projectsOutput');
-      out.className = 'projects-grid';
-      out.innerHTML = Array(6).fill(0).map(() => `
-        <div class="skeleton-card">
-          <div class="skeleton skeleton-image"></div>
-          <div class="skeleton-body">
-            <div class="skeleton skeleton-tag"></div>
-            <div class="skeleton skeleton-title"></div>
-            <div class="skeleton skeleton-title-sm"></div>
-            <div class="skeleton-actions">
-              <div class="skeleton skeleton-btn"></div>
-              <div class="skeleton skeleton-btn"></div>
-            </div>
-          </div>
-        </div>`).join('');
-    },
-
-    renderError() {
-      const out = document.getElementById('projectsOutput');
-      out.innerHTML = `
-        <div class="error-state">
-          <span class="material-symbols-rounded error-icon">error_outline</span>
-          <div class="error-title">${this.t.errorTitle}</div>
-          <div class="error-msg">${this.t.errorMsg}</div>
-        </div>`;
-    },
-
-    resetFilters() {
-      this.query = '';
-      this.category = 'all';
-      document.getElementById('searchInput').value = '';
-      document.getElementById('searchClear').classList.remove('visible');
-      localStorage.removeItem('pl_category');
-      this.buildCategoryChips();
-      this.applyFilters();
-    },
-
-    // ── Sort Menu ──
-    showSortMenu() {
-      const menu = document.getElementById('sortMenu');
-      const backdrop = document.getElementById('sortBackdrop');
-      const btn = document.getElementById('sortBtnTop');
-      const rect = btn.getBoundingClientRect();
-      menu.style.top = (rect.bottom + 8) + 'px';
-
-      const themeMenu = document.getElementById('themeMenu');
-      themeMenu.classList.remove('visible');
-
-      const sortOptions = [
-        { key: 'nameAZ', icon: 'sort_by_alpha', label: () => this.t.nameAZ },
-        { key: 'nameZA', icon: 'sort_by_alpha', label: () => this.t.nameZA },
-        { key: 'categoryAZ', icon: 'category', label: () => this.t.categoryAZ },
-        { key: 'newest', icon: 'new_releases', label: () => this.t.newest },
-      ];
-
-      document.getElementById('sortMenuHeader').textContent = this.t.sortBy;
-      menu.querySelectorAll('.sort-option').forEach(e => e.remove());
-
-      sortOptions.forEach(opt => {
-        const el = document.createElement('div');
-        el.className = `sort-option ripple-container${this.sort === opt.key ? ' active' : ''}`;
-        el.setAttribute('role', 'menuitem');
-        el.innerHTML = `<span class="material-symbols-rounded">${opt.icon}</span>${opt.label()}<span class="material-symbols-rounded sort-check">check</span>`;
-        el.addEventListener('click', () => {
-          this.sort = opt.key;
-          localStorage.setItem('pl_sort', this.sort);
-          this.updateSortLabel();
-          this.applyFilters();
-          this.closemenus();
-        });
-        this.addRipple(el);
-        menu.appendChild(el);
-      });
-
-      const isOpen = menu.classList.contains('visible');
-      this.closemenus();
-      if (!isOpen) {
-        menu.classList.add('visible');
-        backdrop.classList.add('visible');
-        this.menuOpen = 'sort';
-      }
-    },
-
-    showThemeMenu() {
-      const menu = document.getElementById('themeMenu');
-      const backdrop = document.getElementById('sortBackdrop');
-      const btn = document.getElementById('themeBtnTop');
-      const rect = btn.getBoundingClientRect();
-      menu.style.top = (rect.bottom + 8) + 'px';
-
-      const sortMenu = document.getElementById('sortMenu');
-      sortMenu.classList.remove('visible');
-
-      const themes = [
-        { key: 'light', icon: 'light_mode', label: () => this.t.themeLight },
-        { key: 'dark',  icon: 'dark_mode', label: () => this.t.themeDark },
-        { key: 'system', icon: 'brightness_6', label: () => this.t.themeSystem },
-      ];
-
-      document.getElementById('themeMenuHeader').textContent = this.t.theme;
-      menu.querySelectorAll('.sort-option').forEach(e => e.remove());
-
-      themes.forEach(opt => {
-        const el = document.createElement('div');
-        el.className = `sort-option ripple-container${this.theme === opt.key ? ' active' : ''}`;
-        el.setAttribute('role', 'menuitem');
-        el.innerHTML = `<span class="material-symbols-rounded">${opt.icon}</span>${opt.label()}<span class="material-symbols-rounded sort-check">check</span>`;
-        el.addEventListener('click', () => {
-          this.theme = opt.key;
-          localStorage.setItem('pl_theme', this.theme);
-          this.applyTheme();
-          this.closemenus();
-        });
-        this.addRipple(el);
-        menu.appendChild(el);
-      });
-
-      const isOpen = menu.classList.contains('visible');
-      this.closemenus();
-      if (!isOpen) {
-        menu.classList.add('visible');
-        backdrop.classList.add('visible');
-        this.menuOpen = 'theme';
-      }
-    },
-
-    closemenus() {
-      document.getElementById('sortMenu').classList.remove('visible');
-      document.getElementById('themeMenu').classList.remove('visible');
-      document.getElementById('sortBackdrop').classList.remove('visible');
-      this.menuOpen = null;
-    },
-
-    updateSortLabel() {
-      const labels = { nameAZ: () => this.t.nameAZ, nameZA: () => this.t.nameZA,
-        categoryAZ: () => this.t.categoryAZ, newest: () => this.t.newest };
-      document.getElementById('sortLabel').textContent = labels[this.sort]?.() ?? '';
-    },
-
-    // ── Theme ──
-    applyTheme() {
-      const root = document.documentElement;
-      const meta = document.getElementById('meta-theme');
-      if (this.theme === 'dark') {
-        root.setAttribute('data-theme', 'dark');
-        root.classList.add('dark-mode');
-        meta.content = '#111316';
-      } else if (this.theme === 'light') {
-        root.setAttribute('data-theme', 'light');
-        root.classList.remove('dark-mode');
-        meta.content = '#1976D2';
-      } else {
-        root.setAttribute('data-theme', 'system');
-        const prefersDark = window.matchMedia('(prefers-color-scheme: dark)').matches;
-        root.classList.toggle('dark-mode', prefersDark);
-        meta.content = prefersDark ? '#111316' : '#1976D2';
-      }
-      this.updateThemeIcon();
-    },
-
-    cycleTheme() {
-      const order = ['light','dark','system'];
-      const idx = order.indexOf(this.theme);
-      this.theme = order[(idx+1) % order.length];
-      localStorage.setItem('pl_theme', this.theme);
-      this.applyTheme();
-    },
-
-    updateThemeIcon() {
-      const icons = { light: 'light_mode', dark: 'dark_mode', system: 'brightness_6' };
-      const ic = icons[this.theme] || 'brightness_6';
-      document.getElementById('themeIconTop').textContent = ic;
-      document.getElementById('bnThemeIcon').textContent = ic;
-    },
-
-    // ── Language ──
-    applyLang() {
-      document.documentElement.lang = this.lang;
-      document.getElementById('appTitle').textContent = this.t.appTitle;
-      document.getElementById('searchInput').placeholder = this.t.search;
-      document.getElementById('langLabel').textContent = this.lang === 'en' ? 'EN' : 'VI';
-      document.getElementById('bnHomeLabel').textContent = this.t.home;
-      document.getElementById('bnSortLabel').textContent = this.t.sort;
-      document.getElementById('bnLangLabel').textContent = this.t.language;
-      document.getElementById('bnThemeLabel').textContent = this.t.theme;
-      document.getElementById('appFooter').innerHTML = `
-        ${this.t.footerBy} <a href="#" target="_blank">trongsigmaprovip</a> · ${this.t.footerAI}`;
-      this.updateSortLabel();
-      if (this.data.length) {
-        const count = document.getElementById('resultCount');
-        count.textContent = this.t.results(this.filtered.length);
-      }
-    },
-
-    toggleLang() {
-      this.lang = this.lang === 'en' ? 'vi' : 'en';
-      localStorage.setItem('pl_lang', this.lang);
-      this.applyLang();
-      if (this.data.length) this.buildCategoryChips();
-    },
-
-    // ── View ──
-    applyView() {
-      const gridIcon = this.view === 'grid' ? 'view_list' : 'grid_view';
-      document.getElementById('viewIcon').textContent = gridIcon;
-      document.getElementById('viewIconToolbar').textContent = gridIcon;
-    },
-
-    toggleView() {
-      this.view = this.view === 'grid' ? 'list' : 'grid';
-      localStorage.setItem('pl_view', this.view);
-      this.applyView();
-      if (this.filtered.length) this.renderProjects();
-    },
-
-    bottomNavSelect(tab) {
-      document.querySelectorAll('.bottom-nav-item').forEach(el => el.classList.remove('active'));
-      document.getElementById('bn' + tab.charAt(0).toUpperCase() + tab.slice(1))?.classList.add('active');
-    },
-
-    // ── Ripple ──
-    addRipple(el) {
-      el.addEventListener('pointerdown', e => {
-        const rect = el.getBoundingClientRect();
-        const size = Math.max(rect.width, rect.height) * 2;
-        const x = e.clientX - rect.left - size/2;
-        const y = e.clientY - rect.top - size/2;
-        const ripple = document.createElement('span');
-        ripple.className = 'ripple';
-        ripple.style.cssText = `width:${size}px;height:${size}px;left:${x}px;top:${y}px`;
-        el.appendChild(ripple);
-        setTimeout(() => ripple.remove(), 600);
-      });
-    },
-
-    // ── Bind Events ──
-    bindEvents() {
-      // Scroll
-      window.addEventListener('scroll', () => {
-        document.getElementById('topBar').classList.toggle('scrolled', window.scrollY > 4);
-      }, { passive: true });
-
-      // Search
-      const searchInput = document.getElementById('searchInput');
-      const clearBtn = document.getElementById('searchClear');
-      searchInput.addEventListener('input', () => {
-        this.query = searchInput.value;
-        clearBtn.classList.toggle('visible', this.query.length > 0);
-        this.applyFilters();
-      });
-      clearBtn.addEventListener('click', () => {
-        searchInput.value = '';
-        this.query = '';
-        clearBtn.classList.remove('visible');
-        this.applyFilters();
-        searchInput.focus();
-      });
-
-      // Sort buttons
-      document.getElementById('sortBtnTop').addEventListener('click', () => this.showSortMenu());
-      document.getElementById('sortBtnToolbar').addEventListener('click', () => this.showSortMenu());
-      document.getElementById('sortBackdrop').addEventListener('click', () => this.closemenus());
-
-      // Theme
-      document.getElementById('themeBtnTop').addEventListener('click', () => this.showThemeMenu());
-
-      // View toggle
-      document.getElementById('viewToggleBtn').addEventListener('click', () => this.toggleView());
-      document.getElementById('viewToggleToolbar').addEventListener('click', () => this.toggleView());
-
-      // Lang
-      document.getElementById('langToggle').addEventListener('click', () => this.toggleLang());
-
-      // System theme change
-      window.matchMedia('(prefers-color-scheme: dark)').addEventListener('change', () => {
-        if (this.theme === 'system') this.applyTheme();
-      });
-
-      // Keyboard
-      document.addEventListener('keydown', e => {
-        if (e.key === 'Escape') this.closemenus();
-        if ((e.ctrlKey || e.metaKey) && e.key === 'k') {
-          e.preventDefault();
-          document.getElementById('searchInput').focus();
-        }
-      });
-    },
-
-    // ── Utils ──
-    esc(str) {
-      return String(str ?? '').replace(/&/g,'&amp;').replace(/</g,'&lt;').replace(/>/g,'&gt;');
-    },
-    escAttr(str) {
-      return String(str ?? '').replace(/"/g,'&quot;').replace(/'/g,'&#39;');
-    }
-  };
-
-  // ─── PWA ──────────────────────────────────────────────────────
-  if ('serviceWorker' in navigator) {
-    navigator.serviceWorker.register('sw.js').catch(() => {});
+<script>
+// ══════════════════════════════════════════════
+// TRANSLATIONS
+// ══════════════════════════════════════════════
+const T = {
+  en: {
+    appTitle: 'Project List',
+    search: 'Search projects…',
+    all: 'All',
+    sortBy: 'Sort by',
+    nameAZ: 'Name A–Z', nameZA: 'Name Z–A',
+    catAZ: 'Category A–Z', newest: 'Newest',
+    results: n => `${n} project${n!==1?'s':''}`,
+    noResults: 'No projects found',
+    noResultsSub: 'Try adjusting your search or category filters.',
+    reset: 'Reset filters',
+    visit: 'Visit', src: 'Source',
+    theme: 'Theme', themeL: 'Light', themeD: 'Dark', themeS: 'System',
+    loading: 'Loading…',
+    errTitle: 'Failed to load',
+    errMsg: 'Could not fetch project data. Please check your connection.',
+    home: 'Home', sort: 'Sort', language: 'Language',
+    madeBy: 'Made by', aiBy: 'with Claude AI',
+  },
+  vi: {
+    appTitle: 'Danh Sách Dự Án',
+    search: 'Tìm kiếm dự án…',
+    all: 'Tất cả',
+    sortBy: 'Sắp xếp',
+    nameAZ: 'Tên A–Z', nameZA: 'Tên Z–A',
+    catAZ: 'Danh mục A–Z', newest: 'Mới nhất',
+    results: n => `${n} dự án`,
+    noResults: 'Không tìm thấy dự án',
+    noResultsSub: 'Thử thay đổi từ khóa hoặc bộ lọc danh mục.',
+    reset: 'Xóa bộ lọc',
+    visit: 'Xem', src: 'Code',
+    theme: 'Giao diện', themeL: 'Sáng', themeD: 'Tối', themeS: 'Hệ thống',
+    loading: 'Đang tải…',
+    errTitle: 'Không thể tải',
+    errMsg: 'Không thể lấy dữ liệu. Vui lòng kiểm tra kết nối.',
+    home: 'Trang chủ', sort: 'Sắp xếp', language: 'Ngôn ngữ',
+    madeBy: 'Tạo bởi', aiBy: 'với Claude AI',
   }
+};
 
-  // ─── BOOT ─────────────────────────────────────────────────────
-  app.init();
-  </script>
+// ══════════════════════════════════════════════
+// SVG ICONS (inline helpers)
+// ══════════════════════════════════════════════
+const use = (id, size=24) =>
+  `<svg width="${size}" height="${size}" fill="currentColor" viewBox="0 0 24 24"><use href="#${id}"/></svg>`;
+
+const THEME_ICONS = {
+  light: 'ic-light', dark: 'ic-dark', system: 'ic-system'
+};
+
+// ══════════════════════════════════════════════
+// APP
+// ══════════════════════════════════════════════
+const SHEET_ID = '1eyJ1EReaig8bkaHwHgDoNtvlLO2XSxxE3VrMRP3YHeA';
+const SHEET_URL = `https://docs.google.com/spreadsheets/d/${SHEET_ID}/gviz/tq?tqx=out:json`;
+
+const LS = {
+  get: (k, d='') => { try { return localStorage.getItem('pl_'+k) ?? d; } catch { return d; } },
+  set: (k, v) => { try { localStorage.setItem('pl_'+k, v); } catch {} }
+};
+
+const app = {
+  data: [], filtered: [],
+  lang:     LS.get('lang', 'en'),
+  theme:    LS.get('theme', 'system'),
+  view:     LS.get('view', 'grid'),
+  sort:     LS.get('sort', 'nameAZ'),
+  category: LS.get('cat', 'all'),
+  query:    '',
+  activeMenu: null,
+
+  get t() { return T[this.lang]; },
+
+  async init() {
+    this.applyTheme(false);
+    this.updateUI();
+    this.renderSkeletons();
+    this.bindEvents();
+    try {
+      await this.fetchData();
+      this.buildChips();
+      this.applyFilters();
+    } catch(e) {
+      this.renderError();
+    }
+  },
+
+  async fetchData() {
+    const res = await fetch(SHEET_URL);
+    if (!res.ok) throw new Error('HTTP '+res.status);
+    const text = await res.text();
+    const json = JSON.parse(text.replace(/^[^\(]+\(/, '').replace(/\);\s*$/, ''));
+    const cols = json.table.cols.map(c => (c.label||'').toLowerCase().trim());
+    this.data = json.table.rows.map((row, i) => {
+      const o = {_i: i};
+      cols.forEach((c, j) => { o[c] = row.c[j]?.v ?? row.c[j]?.f ?? ''; });
+      return o;
+    }).filter(r => r.name);
+  },
+
+  buildChips() {
+    const cats = ['all', ...new Set(this.data.map(p=>p.category).filter(Boolean).sort())];
+    const row = document.getElementById('filterRow');
+    row.innerHTML = cats.map(cat => `
+      <button class="filter-chip ripple-surface${this.category===cat?' selected':''}"
+        data-cat="${cat}" aria-pressed="${this.category===cat}">
+        <span class="chip-icon chip-check">${use('ic-check',18)}</span>
+        <span class="chip-icon chip-icon-base">${use(cat==='all'?'ic-apps':'ic-folder',18)}</span>
+        ${cat==='all' ? this.t.all : cat}
+      </button>`).join('');
+    row.querySelectorAll('.filter-chip').forEach(btn => {
+      btn.addEventListener('click', () => {
+        this.category = btn.dataset.cat;
+        LS.set('cat', this.category);
+        row.querySelectorAll('.filter-chip').forEach(b => {
+          b.classList.toggle('selected', b.dataset.cat===this.category);
+          b.setAttribute('aria-pressed', b.dataset.cat===this.category);
+        });
+        this.applyFilters();
+      });
+      this.addRipple(btn);
+    });
+  },
+
+  applyFilters() {
+    let list = [...this.data];
+    if (this.category !== 'all') list = list.filter(p => p.category===this.category);
+    if (this.query) {
+      const q = this.query.toLowerCase();
+      list = list.filter(p =>
+        (p.name||'').toLowerCase().includes(q) ||
+        (p.category||'').toLowerCase().includes(q));
+    }
+    this.filtered = this.sortData(list);
+    this.renderProjects();
+  },
+
+  sortData(list) {
+    return list.slice().sort((a,b) => {
+      if (this.sort==='nameAZ')  return (a.name||'').localeCompare(b.name||'');
+      if (this.sort==='nameZA')  return (b.name||'').localeCompare(a.name||'');
+      if (this.sort==='catAZ')   return (a.category||'').localeCompare(b.category||'');
+      if (this.sort==='newest')  return b._i - a._i;
+      return 0;
+    });
+  },
+
+  renderProjects() {
+    const out = document.getElementById('projectsOutput');
+    document.getElementById('resultCount').textContent = this.t.results(this.filtered.length);
+
+    if (!this.filtered.length) {
+      out.className = ''; out.innerHTML = this.emptyHTML(); return;
+    }
+    out.className = this.view==='grid' ? 'grid-layout' : 'list-layout';
+    out.innerHTML = this.filtered.map(p =>
+      this.view==='grid' ? this.cardHTML(p) : this.rowHTML(p)).join('');
+
+    out.querySelectorAll('.ripple-surface').forEach(el => this.addRipple(el));
+
+    // Lazy-load images
+    out.querySelectorAll('img[data-src]').forEach(img => {
+      const obs = new IntersectionObserver(entries => {
+        if (entries[0].isIntersecting) {
+          const el = entries[0].target;
+          const tmp = new Image();
+          tmp.onload = () => { el.src = el.dataset.src; el.style.opacity=1; };
+          tmp.onerror = () => el.closest('.card-media, .row-leading')
+            ?.replaceWith(this.makePlaceholder(el.closest('.project-card') ? 'card' : 'row'));
+          tmp.src = el.dataset.src;
+          obs.disconnect();
+        }
+      }, { rootMargin: '200px' });
+      obs.observe(img);
+    });
+  },
+
+  makePlaceholder(type) {
+    const d = document.createElement('div');
+    if (type==='card') {
+      d.className = 'card-media-placeholder';
+      d.innerHTML = `<span class="icon icon-lg">${use('ic-code',32)}</span>`;
+    } else {
+      d.className = 'row-leading-placeholder';
+      d.innerHTML = `<span class="icon">${use('ic-code')}</span>`;
+    }
+    return d;
+  },
+
+  cardHTML(p) {
+    const media = p.image
+      ? `<div class="card-media"><img data-src="${this.ea(p.image)}" src="" alt="${this.ea(p.name)}" style="opacity:0" /></div>`
+      : `<div class="card-media-placeholder"><span class="icon icon-lg">${use('ic-code',32)}</span></div>`;
+    const visit = p.url
+      ? `<a class="btn-filled ripple-surface" href="${this.ea(p.url)}" target="_blank" rel="noopener noreferrer" onclick="event.stopPropagation()">
+          <span class="icon">${use('ic-link',18)}</span>${this.t.visit}</a>` : '';
+    const src = p.source_code
+      ? `<a class="btn-outlined ripple-surface" href="${this.ea(p.source_code)}" target="_blank" rel="noopener noreferrer" onclick="event.stopPropagation()">
+          <span class="icon">${use('ic-code',18)}</span>${this.t.src}</a>` : '';
+    return `
+      <article class="project-card">
+        ${media}
+        <div class="card-body">
+          ${p.category ? `<div class="category-chip"><span class="icon" style="width:14px;height:14px">${use('ic-folder',14)}</span>${this.e(p.category)}</div>` : ''}
+          <h2 class="card-title">${this.e(p.name)}</h2>
+          ${visit||src ? `<div class="card-actions">${visit}${src}</div>` : ''}
+        </div>
+      </article>`;
+  },
+
+  rowHTML(p) {
+    const lead = p.image
+      ? `<div class="row-leading"><img data-src="${this.ea(p.image)}" src="" alt="" style="opacity:0;width:100%;height:100%;object-fit:cover" /></div>`
+      : `<div class="row-leading-placeholder"><span class="icon">${use('ic-code')}</span></div>`;
+    const visit = p.url
+      ? `<a class="md-icon-btn" href="${this.ea(p.url)}" target="_blank" rel="noopener noreferrer" title="${this.t.visit}" onclick="event.stopPropagation()">
+          <span class="icon">${use('ic-link')}</span></a>` : '';
+    const src = p.source_code
+      ? `<a class="md-icon-btn" href="${this.ea(p.source_code)}" target="_blank" rel="noopener noreferrer" title="${this.t.src}" onclick="event.stopPropagation()">
+          <span class="icon">${use('ic-code')}</span></a>` : '';
+    return `
+      <div class="project-row">
+        ${lead}
+        <div class="row-content">
+          <div class="row-headline">${this.e(p.name)}</div>
+          ${p.category ? `<div class="row-supporting">${this.e(p.category)}</div>` : ''}
+        </div>
+        <div class="row-trailing">${visit}${src}</div>
+      </div>`;
+  },
+
+  emptyHTML() {
+    return `<div class="empty-state">
+      <div class="state-icon-wrap empty-icon-wrap"><span class="icon icon-lg">${use('ic-search-off',32)}</span></div>
+      <div class="state-title">${this.t.noResults}</div>
+      <div class="state-body">${this.t.noResultsSub}</div>
+      <button class="btn-tonal-reset" onclick="app.reset()">${this.t.reset}</button>
+    </div>`;
+  },
+
+  renderSkeletons() {
+    const out = document.getElementById('projectsOutput');
+    out.className = 'grid-layout';
+    out.innerHTML = Array(8).fill(0).map(()=>`
+      <div class="skel-card">
+        <div class="skel skel-media"></div>
+        <div class="skel-body">
+          <div class="skel skel-chip"></div>
+          <div class="skel skel-h2"></div>
+          <div class="skel skel-h3"></div>
+          <div class="skel-row"><div class="skel skel-btn"></div><div class="skel skel-btn"></div></div>
+        </div>
+      </div>`).join('');
+  },
+
+  renderError() {
+    document.getElementById('projectsOutput').innerHTML = `
+      <div class="error-state">
+        <div class="state-icon-wrap error-icon-wrap"><span class="icon icon-lg">${use('ic-error',32)}</span></div>
+        <div class="state-title">${this.t.errTitle}</div>
+        <div class="state-body">${this.t.errMsg}</div>
+      </div>`;
+  },
+
+  reset() {
+    this.query=''; this.category='all';
+    document.getElementById('searchInput').value='';
+    document.getElementById('searchClear').classList.remove('visible');
+    LS.set('cat','all');
+    this.buildChips(); this.applyFilters();
+  },
+
+  // ── MENUS ──
+  showSortMenu() {
+    const menu = document.getElementById('sortMenu');
+    const items = document.getElementById('sortMenuItems');
+    document.getElementById('sortMenuTitle').textContent = this.t.sortBy;
+    const opts = [
+      {k:'nameAZ', icon:'ic-list', l:()=>this.t.nameAZ},
+      {k:'nameZA', icon:'ic-list', l:()=>this.t.nameZA},
+      {k:'catAZ',  icon:'ic-folder', l:()=>this.t.catAZ},
+      {k:'newest', icon:'ic-apps', l:()=>this.t.newest},
+    ];
+    items.innerHTML = opts.map(o=>`
+      <div class="menu-item ripple-surface${this.sort===o.k?' active':''}" data-sort="${o.k}">
+        <span class="icon">${use(o.icon,20)}</span>${o.l()}
+        <span class="menu-item-check icon" style="margin-left:auto;opacity:${this.sort===o.k?1:0}">${use('ic-check',20)}</span>
+      </div>`).join('');
+    items.querySelectorAll('.menu-item').forEach(el => {
+      this.addRipple(el);
+      el.addEventListener('click', ()=>{
+        this.sort = el.dataset.sort;
+        LS.set('sort', this.sort);
+        this.updateSortLabel();
+        this.applyFilters();
+        this.closeMenus();
+      });
+    });
+    this.openMenu('sort');
+  },
+
+  showThemeMenu() {
+    const items = document.getElementById('themeMenuItems');
+    document.getElementById('themeMenuTitle').textContent = this.t.theme;
+    const opts = [
+      {k:'light', icon:'ic-light', l:()=>this.t.themeL},
+      {k:'dark',  icon:'ic-dark',  l:()=>this.t.themeD},
+      {k:'system',icon:'ic-system',l:()=>this.t.themeS},
+    ];
+    items.innerHTML = opts.map(o=>`
+      <div class="menu-item ripple-surface${this.theme===o.k?' active':''}" data-th="${o.k}">
+        <span class="icon">${use(o.icon,20)}</span>${o.l()}
+        <span class="menu-item-check icon" style="margin-left:auto;opacity:${this.theme===o.k?1:0}">${use('ic-check',20)}</span>
+      </div>`).join('');
+    items.querySelectorAll('.menu-item').forEach(el=>{
+      this.addRipple(el);
+      el.addEventListener('click',()=>{
+        this.theme=el.dataset.th; LS.set('theme',this.theme);
+        this.applyTheme(); this.closeMenus();
+      });
+    });
+    this.openMenu('theme');
+  },
+
+  openMenu(name) {
+    this.closeMenus();
+    const menu = document.getElementById(name+'Menu');
+    const btn  = document.getElementById(name==='sort'?'topSortBtn':'topThemeBtn');
+    const rect = btn.getBoundingClientRect();
+    menu.style.top = (rect.bottom + 4)+'px';
+    menu.classList.add('open');
+    document.getElementById('scrim').classList.add('open');
+    this.activeMenu = name;
+  },
+
+  closeMenus() {
+    ['sortMenu','themeMenu'].forEach(id=>document.getElementById(id).classList.remove('open'));
+    document.getElementById('scrim').classList.remove('open');
+    this.activeMenu = null;
+  },
+
+  // ── THEME ──
+  applyTheme(animate=true) {
+    const dark = this.theme==='dark' ||
+      (this.theme==='system' && window.matchMedia('(prefers-color-scheme:dark)').matches);
+    document.documentElement.setAttribute('data-theme', dark?'dark':'light');
+    document.getElementById('meta-theme').content = dark?'#111318':'#1565C0';
+    this.updateThemeIcons();
+  },
+
+  cycleTheme() {
+    const order=['light','dark','system'];
+    this.theme = order[(order.indexOf(this.theme)+1)%3];
+    LS.set('theme',this.theme); this.applyTheme();
+  },
+
+  updateThemeIcons() {
+    const ic = THEME_ICONS[this.theme];
+    document.getElementById('topThemeIcon').innerHTML = use(ic);
+    document.getElementById('bnThemeIconWrap').innerHTML = use(ic);
+  },
+
+  // ── LANG ──
+  updateUI() {
+    document.documentElement.lang = this.lang;
+    document.getElementById('appTitle').textContent = this.t.appTitle;
+    document.getElementById('searchInput').placeholder = this.t.search;
+    document.getElementById('langLabel').textContent = this.lang==='en'?'EN':'VI';
+    document.getElementById('bnHomeLabel').textContent = this.t.home;
+    document.getElementById('bnSortLabel').textContent = this.t.sort;
+    document.getElementById('bnLangLabel').textContent = this.t.language;
+    document.getElementById('bnThemeLabel').textContent = this.t.theme;
+    document.getElementById('appFooter').innerHTML =
+      `${this.t.madeBy} <a href="https://github.com/trongsigmaprovip" target="_blank" rel="noopener">trongsigmaprovip</a> · ${this.t.aiBy}`;
+    this.updateSortLabel();
+    const rc = document.getElementById('resultCount');
+    if (this.filtered.length) rc.textContent = this.t.results(this.filtered.length);
+  },
+
+  toggleLang() {
+    this.lang = this.lang==='en'?'vi':'en';
+    LS.set('lang',this.lang); this.updateUI();
+    if (this.data.length) this.buildChips();
+  },
+
+  // ── VIEW ──
+  toggleView() {
+    this.view = this.view==='grid'?'list':'grid';
+    LS.set('view',this.view); this.updateViewIcons();
+    if (this.filtered.length) this.renderProjects();
+  },
+
+  updateViewIcons() {
+    const icon = this.view==='grid' ? use('ic-list') : use('ic-grid');
+    document.getElementById('topViewIcon').innerHTML = icon;
+    document.getElementById('toolbarViewIcon').innerHTML = icon;
+  },
+
+  updateSortLabel() {
+    const m = {nameAZ:()=>this.t.nameAZ, nameZA:()=>this.t.nameZA,
+               catAZ:()=>this.t.catAZ, newest:()=>this.t.newest};
+    document.getElementById('sortLabel').textContent = m[this.sort]?.()??'';
+  },
+
+  // ── BOTTOM NAV ──
+  bnSelect(id) {
+    document.querySelectorAll('.bottom-nav-item').forEach(el=>el.classList.remove('active'));
+    document.getElementById('bn'+id)?.classList.add('active');
+  },
+
+  // ── RIPPLE ──
+  addRipple(el) {
+    if (el._ripple) return; el._ripple = true;
+    el.addEventListener('pointerdown', e => {
+      const r = el.getBoundingClientRect();
+      const size = Math.max(r.width,r.height)*2.5;
+      const x = e.clientX-r.left-size/2, y = e.clientY-r.top-size/2;
+      const rip = document.createElement('span');
+      rip.className='ripple';
+      rip.style.cssText=`width:${size}px;height:${size}px;left:${x}px;top:${y}px`;
+      el.appendChild(rip);
+      setTimeout(()=>rip.remove(), 600);
+    });
+  },
+
+  // ── BIND ──
+  bindEvents() {
+    window.addEventListener('scroll', () => {
+      document.getElementById('topBar').classList.toggle('scrolled', window.scrollY>4);
+    }, {passive:true});
+
+    const si = document.getElementById('searchInput');
+    const sc = document.getElementById('searchClear');
+    si.addEventListener('input', () => {
+      this.query = si.value;
+      sc.classList.toggle('visible', this.query.length>0);
+      this.applyFilters();
+    });
+    sc.addEventListener('click', () => {
+      si.value=''; this.query=''; sc.classList.remove('visible');
+      this.applyFilters(); si.focus();
+    });
+
+    document.getElementById('topSortBtn').addEventListener('click', ()=>this.showSortMenu());
+    document.getElementById('toolbarSortBtn').addEventListener('click', ()=>this.showSortMenu());
+    document.getElementById('topThemeBtn').addEventListener('click', ()=>this.showThemeMenu());
+    document.getElementById('topViewBtn').addEventListener('click', ()=>this.toggleView());
+    document.getElementById('toolbarViewBtn').addEventListener('click', ()=>this.toggleView());
+    document.getElementById('langChip').addEventListener('click', ()=>this.toggleLang());
+    document.getElementById('scrim').addEventListener('click', ()=>this.closeMenus());
+
+    window.matchMedia('(prefers-color-scheme:dark)').addEventListener('change', ()=>{
+      if (this.theme==='system') this.applyTheme();
+    });
+
+    document.addEventListener('keydown', e=>{
+      if (e.key==='Escape') this.closeMenus();
+      if ((e.ctrlKey||e.metaKey)&&e.key==='k') { e.preventDefault(); si.focus(); }
+    });
+
+    ['toolbarSortBtn','toolbarViewBtn'].forEach(id=>{
+      const el=document.getElementById(id);
+      if(el) this.addRipple(el);
+    });
+  },
+
+  e(s)  { return String(s??'').replace(/&/g,'&amp;').replace(/</g,'&lt;').replace(/>/g,'&gt;'); },
+  ea(s) { return String(s??'').replace(/"/g,'&quot;').replace(/'/g,'&#39;'); },
+};
+
+if ('serviceWorker' in navigator) {
+  navigator.serviceWorker.register('sw.js').catch(()=>{});
+}
+
+app.init();
+</script>
 </body>
 </html>
